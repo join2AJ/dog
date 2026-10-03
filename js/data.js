@@ -1,442 +1,5 @@
-/* PawPedia content data.
+/* PawPedia general content (breed data lives in js/breeds.js).
  * General educational guidance only; always confirm health and diet decisions with a vet. */
-
-window.BREEDS = [
-  {
-    id: "labrador",
-    name: "Labrador Retriever",
-    emoji: "🦮",
-    color: "#d9a441",
-    size: "Large",
-    weight: "25–36 kg",
-    lifespan: "10–12 years",
-    energy: 5,
-    grooming: 2,
-    apartment: 2,
-    firstTime: 5,
-    kids: 5,
-    heatTolerance: 3,
-    coldTolerance: 4,
-    origin: "Newfoundland, Canada",
-    bark: "deep",
-    temperament: ["Friendly", "Outgoing", "Eager to please"],
-    play: ["Fetch with a ball or frisbee", "Swimming", "Retrieving games", "Tug of war", "Food puzzle toys"],
-    behaviour: "Sociable and gentle with everyone, including strangers and other pets. Very food-motivated, which makes training easy but overeating a risk. Stays puppy-like until about 3 years old.",
-    bestQuality: "Loyal, patient family companion that is easy to train. A popular choice for guide and therapy work.",
-    dislikes: ["Being left alone for long hours", "Boredom (can lead to chewing)", "Harsh scolding"],
-    foods: ["Lean boiled chicken", "Carrots", "Green beans (low-calorie filler)", "Measured high-quality kibble"],
-    idealTemp: "10–24 °C",
-    climate: "Handles cool weather well thanks to a water-resistant double coat. In hot climates, walk at dawn or dusk and give plenty of water.",
-    issues: [
-      { issue: "Obesity", fix: "Measure every meal, count treats as part of daily calories, and give at least 1 hour of exercise a day." },
-      { issue: "Hip & elbow dysplasia", fix: "Choose parents with health screening, keep the dog lean, and avoid hard jumping until growth plates close (~18 months)." },
-      { issue: "Ear infections", fix: "Dry the ears after swimming and clean them weekly with a vet-approved cleaner." }
-    ]
-  },
-  {
-    id: "german-shepherd",
-    name: "German Shepherd",
-    emoji: "🐕‍🦺",
-    color: "#7a4f2a",
-    size: "Large",
-    weight: "22–40 kg",
-    lifespan: "9–13 years",
-    energy: 5,
-    grooming: 3,
-    apartment: 1,
-    firstTime: 2,
-    kids: 4,
-    heatTolerance: 3,
-    coldTolerance: 4,
-    origin: "Germany",
-    bark: "deep",
-    temperament: ["Confident", "Courageous", "Intelligent"],
-    play: ["Obedience & agility training", "Hide-and-seek / scent work", "Fetch", "Tracking games", "Herding balls"],
-    behaviour: "Protective and loyal, usually reserved with strangers. Needs a job to do; without mental work it can become anxious or destructive.",
-    bestQuality: "Highly intelligent and versatile. A top choice for police, search-and-rescue and protection work.",
-    dislikes: ["Lack of mental stimulation", "Inconsistent rules", "Being isolated from family"],
-    foods: ["High-protein kibble", "Cooked lean meat", "Plain cooked eggs", "Pumpkin (plain, for digestion)"],
-    idealTemp: "8–24 °C",
-    climate: "Its thick double coat suits moderate to cool climates. It sheds heavily, twice a year. Needs shade and cooling in tropical summers.",
-    issues: [
-      { issue: "Hip dysplasia", fix: "Buy or adopt from health-screened lines, keep the dog at a healthy weight, and build muscle with controlled exercise." },
-      { issue: "Bloat (GDV)", fix: "Feed 2–3 smaller meals, avoid exercise for an hour after eating, and treat a swollen belly with retching as an emergency." },
-      { issue: "Degenerative myelopathy", fix: "A DNA test is available. Physiotherapy and keeping the dog active slow the decline." }
-    ]
-  },
-  {
-    id: "golden-retriever",
-    name: "Golden Retriever",
-    emoji: "🐕",
-    color: "#e0a64b",
-    size: "Large",
-    weight: "25–34 kg",
-    lifespan: "10–12 years",
-    energy: 4,
-    grooming: 4,
-    apartment: 2,
-    firstTime: 5,
-    kids: 5,
-    heatTolerance: 2,
-    coldTolerance: 4,
-    origin: "Scotland",
-    bark: "deep",
-    temperament: ["Gentle", "Affectionate", "Trustworthy"],
-    play: ["Fetch", "Swimming", "Carrying soft toys", "Training tricks", "Long walks"],
-    behaviour: "Extremely affectionate and tolerant, especially with kids. Loves carrying things in its mouth. Rarely aggressive, so it makes a poor guard dog.",
-    bestQuality: "A warm, patient, kid-friendly temperament with a famously soft mouth.",
-    dislikes: ["Being ignored", "Hot, humid weather", "Long periods alone"],
-    foods: ["Blueberries", "Apple slices (no seeds)", "Boiled chicken & rice", "Quality kibble with omega-3s"],
-    idealTemp: "8–22 °C",
-    climate: "Its dense coat makes heat hard. In summer use an air-conditioned or fan-cooled room and give cool mats and water.",
-    issues: [
-      { issue: "Cancer (higher breed risk)", fix: "Get regular vet check-ups from age 6 and quickly check any new lumps, weight loss or lethargy." },
-      { issue: "Skin allergies / hot spots", fix: "Brush regularly, dry the coat fully after baths or swims, and ask your vet about an elimination diet." },
-      { issue: "Hip dysplasia", fix: "Keep the dog lean, avoid over-exercising puppies, and choose screened parents." }
-    ]
-  },
-  {
-    id: "indie",
-    name: "Indian Pariah (Indie)",
-    emoji: "🐶",
-    color: "#c98a4b",
-    size: "Medium",
-    weight: "15–30 kg",
-    lifespan: "13–16 years",
-    energy: 4,
-    grooming: 1,
-    apartment: 4,
-    firstTime: 4,
-    kids: 4,
-    heatTolerance: 5,
-    coldTolerance: 3,
-    origin: "Indian subcontinent",
-    bark: "medium",
-    temperament: ["Alert", "Intelligent", "Independent"],
-    play: ["Chasing games", "Running & exploring", "Puzzle feeders", "Tug of war", "Sniff walks"],
-    behaviour: "Naturally alert and territorial, which makes it an excellent watchdog. Very clean and smart, and bonds deeply with its family. Can be wary of strangers until socialised.",
-    bestQuality: "Hardy and healthy, with very few genetic problems. Thrives in tropical weather and needs little maintenance.",
-    dislikes: ["Being tied up or chained", "Lack of outdoor time", "Rough handling"],
-    foods: ["Home-cooked chicken & rice", "Curd (plain, small amounts)", "Boiled eggs", "Pumpkin"],
-    idealTemp: "18–32 °C",
-    climate: "Evolved for the Indian climate. Handles heat very well, but still needs shade and water in peak summer.",
-    issues: [
-      { issue: "Ticks & fleas", fix: "Use a monthly vet-recommended tick preventive and check the coat after every outdoor walk." },
-      { issue: "Skin infections", fix: "Keep bedding dry and clean, and don't over-bathe (once every 3–4 weeks is enough)." },
-      { issue: "Parvovirus in unvaccinated pups", fix: "Complete the full puppy vaccination course and keep pups away from unknown dogs until done." }
-    ]
-  },
-  {
-    id: "beagle",
-    name: "Beagle",
-    emoji: "🐕",
-    color: "#b8742f",
-    size: "Small–Medium",
-    weight: "9–11 kg",
-    lifespan: "12–15 years",
-    energy: 4,
-    grooming: 2,
-    apartment: 3,
-    firstTime: 3,
-    kids: 5,
-    heatTolerance: 3,
-    coldTolerance: 3,
-    origin: "England",
-    bark: "howl",
-    temperament: ["Merry", "Curious", "Friendly"],
-    play: ["Scent trails & nose work", "Hide the treat", "Snuffle mats", "Playing with other dogs", "Long sniffy walks"],
-    behaviour: "Follows its nose everywhere, so recall can be poor and it should stay on a leash in open areas. Very vocal: it bays and howls. Loves company and does poorly alone.",
-    bestQuality: "A cheerful, sturdy and great-sized companion for families with kids.",
-    dislikes: ["Being alone (it will howl)", "Strict confinement", "Boring walks with no sniffing"],
-    foods: ["Carrot sticks", "Cucumber slices", "Measured kibble (it will overeat)", "Plain boiled chicken"],
-    idealTemp: "12–26 °C",
-    climate: "Adapts to most climates. Its short coat needs a sweater only in real cold.",
-    issues: [
-      { issue: "Obesity", fix: "Lock food away, measure meals, and use a slow feeder. Beagles are expert food thieves." },
-      { issue: "Ear infections", fix: "Its long floppy ears trap moisture, so check and clean them weekly." },
-      { issue: "Escaping / roaming", fix: "Build a secure fence, train recall early, and microchip the dog." }
-    ]
-  },
-  {
-    id: "pug",
-    name: "Pug",
-    emoji: "🐶",
-    color: "#cfae7d",
-    size: "Small",
-    weight: "6–8 kg",
-    lifespan: "12–15 years",
-    energy: 2,
-    grooming: 2,
-    apartment: 5,
-    firstTime: 5,
-    kids: 4,
-    heatTolerance: 1,
-    coldTolerance: 2,
-    origin: "China",
-    bark: "small",
-    temperament: ["Charming", "Mischievous", "Loving"],
-    play: ["Short indoor games", "Soft squeaky toys", "Gentle tug", "Cuddles on the couch", "Short walks"],
-    behaviour: "A clownish lap dog that wants to be wherever you are. It snores and snorts. Can be stubborn about training, but responds well to treats.",
-    bestQuality: "An affectionate, low-exercise companion that is perfect for apartment life.",
-    dislikes: ["Heat and humidity (dangerous)", "Strenuous exercise", "Being left out of family activity"],
-    foods: ["Portion-controlled kibble", "Green beans", "Small apple pieces", "Boiled chicken"],
-    idealTemp: "16–22 °C",
-    climate: "A flat-faced (brachycephalic) breed that overheats quickly. Keep it indoors with cooling above 26 °C and never exercise it in the heat.",
-    issues: [
-      { issue: "Breathing problems (BOAS)", fix: "Keep the dog lean, use a harness instead of a collar, avoid heat, and ask a vet about corrective surgery if severe." },
-      { issue: "Eye injuries", fix: "Its prominent eyes injure easily, so see a vet immediately for squinting, redness or cloudiness." },
-      { issue: "Skin fold infections", fix: "Clean and dry the facial wrinkles 2–3 times a week." }
-    ]
-  },
-  {
-    id: "husky",
-    name: "Siberian Husky",
-    emoji: "🐺",
-    color: "#8a95a5",
-    size: "Medium–Large",
-    weight: "16–27 kg",
-    lifespan: "12–14 years",
-    energy: 5,
-    grooming: 4,
-    apartment: 1,
-    firstTime: 1,
-    kids: 4,
-    heatTolerance: 1,
-    coldTolerance: 5,
-    origin: "Siberia, Russia",
-    bark: "howl",
-    temperament: ["Energetic", "Mischievous", "Pack-oriented"],
-    play: ["Running & canicross", "Pulling / sledding sports", "Digging pits", "Playing with other dogs", "Flirt pole"],
-    behaviour: "Talkative: it howls and 'speaks' rather than barks. An escape artist with a strong prey drive. Friendly with everyone, so it is not a guard dog.",
-    bestQuality: "Tremendous stamina and a striking look, with a playful, friendly nature.",
-    dislikes: ["Hot weather", "Being confined or bored", "Being alone without a companion"],
-    foods: ["High-protein, high-fat diet", "Cooked fish (boneless)", "Lean meats", "Measured kibble"],
-    idealTemp: "-10–18 °C",
-    climate: "Built for extreme cold. Not suitable for hot climates without full-time air conditioning. Never shave its coat; the coat insulates against heat too.",
-    issues: [
-      { issue: "Heatstroke", fix: "Keep the dog in AC in summer, exercise only in the cool early morning, and watch for heavy panting or drooling." },
-      { issue: "Escaping", fix: "Use a tall fence with dig-guards. Give it daily intense exercise so it is less tempted to roam." },
-      { issue: "Eye conditions (cataracts, PRA)", fix: "Get yearly eye exams and choose eye-certified parents." }
-    ]
-  },
-  {
-    id: "shih-tzu",
-    name: "Shih Tzu",
-    emoji: "🐩",
-    color: "#e6d3b3",
-    size: "Small",
-    weight: "4–7 kg",
-    lifespan: "10–16 years",
-    energy: 2,
-    grooming: 5,
-    apartment: 5,
-    firstTime: 5,
-    kids: 4,
-    heatTolerance: 2,
-    coldTolerance: 3,
-    origin: "Tibet / China",
-    bark: "small",
-    temperament: ["Affectionate", "Playful", "Outgoing"],
-    play: ["Indoor fetch with small toys", "Gentle tug", "Learning tricks", "Lap time", "Short strolls"],
-    behaviour: "Bred purely as a companion, so it loves people and attention. Usually friendly with guests. Can be slow to house-train.",
-    bestQuality: "A sweet, adaptable lap dog that sheds very little.",
-    dislikes: ["Heat", "Being left alone", "Rough play"],
-    foods: ["Small-bite kibble", "Boiled chicken", "Blueberries", "Cooked sweet potato"],
-    idealTemp: "16–24 °C",
-    climate: "Its flat face makes heat risky. Keep it cool indoors in summer, and consider a short 'puppy cut' trim.",
-    issues: [
-      { issue: "Tear staining & eye issues", fix: "Wipe the eyes daily and keep the hair around them trimmed." },
-      { issue: "Dental disease", fix: "Brush its teeth several times a week and give dental chews. Small mouths crowd teeth." },
-      { issue: "Matting", fix: "Brush daily or keep a short trim, with professional grooming every 4–6 weeks." }
-    ]
-  },
-  {
-    id: "pomeranian",
-    name: "Pomeranian",
-    emoji: "🦊",
-    color: "#e98a3a",
-    size: "Toy",
-    weight: "1.5–3.5 kg",
-    lifespan: "12–16 years",
-    energy: 3,
-    grooming: 4,
-    apartment: 5,
-    firstTime: 4,
-    kids: 2,
-    heatTolerance: 2,
-    coldTolerance: 4,
-    origin: "Germany / Poland (Pomerania)",
-    bark: "small",
-    temperament: ["Bold", "Lively", "Inquisitive"],
-    play: ["Chasing small balls", "Learning tricks", "Squeaky toys", "Indoor zoomies", "Short walks"],
-    behaviour: "A big dog in a tiny body: alert, vocal and confident. It barks at everything, so teach a 'quiet' cue early. Fragile around small kids.",
-    bestQuality: "A fluffy, intelligent and entertaining companion that suits small homes.",
-    dislikes: ["Being picked up roughly", "Heat", "Being ignored"],
-    foods: ["Toy-breed kibble", "Tiny pieces of boiled chicken", "Blueberries", "Small carrot bits"],
-    idealTemp: "10–22 °C",
-    climate: "Its thick double coat suits cool weather. Keep it in AC or a well-ventilated room in hot months.",
-    issues: [
-      { issue: "Luxating patella (kneecap)", fix: "Keep the dog lean, limit jumping from furniture (use ramps), and see a vet if it skips or limps." },
-      { issue: "Collapsing trachea", fix: "Always use a harness, never a neck collar, and avoid smoke and dust." },
-      { issue: "Dental disease", fix: "Brush its teeth daily. Toy breeds lose teeth early." }
-    ]
-  },
-  {
-    id: "rottweiler",
-    name: "Rottweiler",
-    emoji: "🐕",
-    color: "#3b2a22",
-    size: "Large",
-    weight: "35–60 kg",
-    lifespan: "9–10 years",
-    energy: 4,
-    grooming: 1,
-    apartment: 1,
-    firstTime: 1,
-    kids: 3,
-    heatTolerance: 2,
-    coldTolerance: 4,
-    origin: "Germany",
-    bark: "deep",
-    temperament: ["Loyal", "Confident", "Protective"],
-    play: ["Tug of war", "Pushing big balls", "Obedience work", "Carting / weight pull", "Long walks"],
-    behaviour: "Calm and confident, devoted to family, and naturally guarding. Needs early socialisation and firm, consistent, reward-based training.",
-    bestQuality: "Powerful, protective and deeply loyal: a natural guardian.",
-    dislikes: ["Heat", "Inconsistent leadership", "Being isolated"],
-    foods: ["Large-breed formula kibble", "Lean meats", "Cooked eggs", "Fish oil (vet-advised)"],
-    idealTemp: "8–22 °C",
-    climate: "Its dark coat absorbs heat. Needs shade and AC in hot climates, and walks only in cool hours.",
-    issues: [
-      { issue: "Hip & elbow dysplasia", fix: "Choose screened parents, use a large-breed puppy diet for controlled growth, and keep the dog lean." },
-      { issue: "Osteosarcoma (bone cancer)", fix: "Get any persistent limping checked quickly." },
-      { issue: "Aggression if unsocialised", fix: "Start puppy classes early and expose the dog to many people, places and dogs in a positive way." }
-    ]
-  },
-  {
-    id: "dachshund",
-    name: "Dachshund",
-    emoji: "🌭",
-    color: "#8b4a24",
-    size: "Small",
-    weight: "7–14 kg",
-    lifespan: "12–16 years",
-    energy: 3,
-    grooming: 2,
-    apartment: 4,
-    firstTime: 3,
-    kids: 3,
-    heatTolerance: 3,
-    coldTolerance: 2,
-    origin: "Germany",
-    bark: "medium",
-    temperament: ["Brave", "Curious", "Stubborn"],
-    play: ["Digging in a sandbox", "Burrowing in blankets", "Scent games", "Squeaky toys", "Tunnel play"],
-    behaviour: "Bred to hunt badgers, so it is brave, loud and loves to dig. Can be stubborn and protective of its people.",
-    bestQuality: "A big personality with a loud bark: a little watchdog that adores its family.",
-    dislikes: ["Stairs and jumping (back strain)", "Cold weather", "Being picked up incorrectly"],
-    foods: ["Portion-controlled kibble", "Green beans", "Boiled chicken", "Pumpkin"],
-    idealTemp: "16–26 °C",
-    climate: "Its short legs and coat make it sensitive to cold. Use a sweater in winter.",
-    issues: [
-      { issue: "IVDD (spinal disc disease)", fix: "Keep it lean, use ramps instead of stairs, support the back when lifting, and see a vet urgently for wobbliness or pain." },
-      { issue: "Obesity", fix: "Even a little extra weight strains its long back. Measure food strictly." },
-      { issue: "Dental disease", fix: "Brush its teeth regularly and use dental chews." }
-    ]
-  },
-  {
-    id: "french-bulldog",
-    name: "French Bulldog",
-    emoji: "🐶",
-    color: "#c4b39a",
-    size: "Small",
-    weight: "8–13 kg",
-    lifespan: "10–12 years",
-    energy: 2,
-    grooming: 1,
-    apartment: 5,
-    firstTime: 4,
-    kids: 4,
-    heatTolerance: 1,
-    coldTolerance: 2,
-    origin: "France",
-    bark: "small",
-    temperament: ["Playful", "Adaptable", "Easygoing"],
-    play: ["Short tug sessions", "Rolling balls", "Plush toys", "Indoor games", "Short walks in cool weather"],
-    behaviour: "Quiet compared with most breeds, but it 'talks' with yips and grumbles. Very attached to its owner. Clownish and adaptable.",
-    bestQuality: "Compact, quiet and low-exercise: an ideal city companion.",
-    dislikes: ["Heat (dangerous)", "Water (most can't swim)", "Being alone"],
-    foods: ["Hypoallergenic kibble (allergy-prone)", "Boiled chicken", "Cucumber", "Blueberries"],
-    idealTemp: "16–22 °C",
-    climate: "A flat-faced breed at high risk of heatstroke. Keep it in AC in summer and never leave it in a car.",
-    issues: [
-      { issue: "Breathing problems (BOAS)", fix: "Use a harness, keep it lean, avoid heat and over-exertion, and consider surgical assessment." },
-      { issue: "Skin & food allergies", fix: "Try an elimination diet under vet guidance and clean its skin folds." },
-      { issue: "Spinal problems", fix: "Limit jumping, keep a healthy weight, and see a vet for any back pain or weakness." }
-    ]
-  },
-  {
-    id: "border-collie",
-    name: "Border Collie",
-    emoji: "🐕",
-    color: "#2e2e2e",
-    size: "Medium",
-    weight: "14–20 kg",
-    lifespan: "12–15 years",
-    energy: 5,
-    grooming: 3,
-    apartment: 1,
-    firstTime: 2,
-    kids: 4,
-    heatTolerance: 3,
-    coldTolerance: 4,
-    origin: "Scotland / England border",
-    bark: "medium",
-    temperament: ["Workaholic", "Brilliant", "Energetic"],
-    play: ["Frisbee", "Agility courses", "Herding balls (treibball)", "Learning new tricks", "Puzzle toys"],
-    behaviour: "Often called the smartest dog breed. Needs hours of physical and mental work every day. Without it, may herd kids, chase cars or become obsessive.",
-    bestQuality: "Exceptional intelligence and trainability. A champion at dog sports.",
-    dislikes: ["Boredom", "Small spaces with no activity", "Repetitive, dull routines"],
-    foods: ["Performance kibble", "Lean meats", "Blueberries", "Cooked sweet potato"],
-    idealTemp: "5–24 °C",
-    climate: "Adapts to most climates. Its medium double coat sheds seasonally.",
-    issues: [
-      { issue: "Behaviour problems from boredom", fix: "Give it 2+ hours of activity, training games and puzzle feeders every day." },
-      { issue: "Collie eye anomaly", fix: "Choose DNA-tested parents and have eye exams as a puppy." },
-      { issue: "Hip dysplasia", fix: "Keep it lean and avoid repetitive high-impact jumping while young." }
-    ]
-  },
-  {
-    id: "doberman",
-    name: "Doberman Pinscher",
-    emoji: "🐕",
-    color: "#2b1d18",
-    size: "Large",
-    weight: "27–45 kg",
-    lifespan: "10–12 years",
-    energy: 5,
-    grooming: 1,
-    apartment: 2,
-    firstTime: 2,
-    kids: 3,
-    heatTolerance: 3,
-    coldTolerance: 1,
-    origin: "Germany",
-    bark: "deep",
-    temperament: ["Alert", "Loyal", "Fearless"],
-    play: ["Running", "Obedience & protection sports", "Fetch", "Tug", "Scent work"],
-    behaviour: "Sensitive and affectionate with family; a 'velcro dog'. Alert and protective with strangers. Responds best to calm, positive training.",
-    bestQuality: "An elegant, intelligent and loyal guardian that is very trainable.",
-    dislikes: ["Cold weather (thin coat)", "Harsh handling", "Being left outside alone"],
-    foods: ["High-protein kibble", "Lean meats", "Cooked eggs", "Carrots"],
-    idealTemp: "15–28 °C",
-    climate: "Its thin single coat makes it sensitive to cold. It manages warm weather better than many large breeds.",
-    issues: [
-      { issue: "Dilated cardiomyopathy (heart)", fix: "Get yearly heart screening (ECG / echo) from age 2–3." },
-      { issue: "Von Willebrand's disease (bleeding)", fix: "A DNA test is available. Tell your vet before any surgery." },
-      { issue: "Wobbler syndrome (neck)", fix: "Use a harness and see a vet for an unsteady gait." }
-    ]
-  }
-];
 
 window.TIMELINE = [
   {
@@ -646,15 +209,6 @@ window.FOODS = [
   { name: "Mango", verdict: "moderate", note: "The flesh is fine in small amounts. Remove the skin and the stone (choking and cyanide risk)." }
 ];
 
-window.BARKS = [
-  { id: "alert", label: "Alert bark", sound: "alert", meaning: "Rapid, continuous barks at mid pitch.", says: "\"Hey! Someone's here! Pack, pay attention!\"" },
-  { id: "play", label: "Play bark", sound: "play", meaning: "Single or double high-pitched barks, often with a play bow.", says: "\"Come play with me!\"" },
-  { id: "warning", label: "Warning bark", sound: "warning", meaning: "A low, deep bark, sometimes mixed with a growl.", says: "\"Back off. I'm serious.\"" },
-  { id: "demand", label: "Attention bark", sound: "demand", meaning: "Single sharp barks with pauses, while looking at you.", says: "\"Hello? Dinner? Walk? Now?\"" },
-  { id: "howl", label: "Howl", sound: "howl", meaning: "A long, sustained tone, often in reply to sirens.", says: "\"I'm here. Where is everyone?\"" },
-  { id: "whine", label: "Whine", sound: "whine", meaning: "A high, nasal, rising sound.", says: "\"I'm anxious, excited, or I need something.\"" }
-];
-
 window.ADOPT_CHECKLIST = [
   { group: "Before you bring a dog home", items: [
     "Everyone in the family agrees and nobody is severely allergic",
@@ -692,34 +246,167 @@ window.ADOPT_CHECKLIST = [
   ]}
 ];
 
+/* Universal dog "language" — played in the selected breed's voice in the Bark Lab. */
+window.BARKS = [
+  { s: "alert", t: "Alert barking", when: "Rapid, repeated barks at mid pitch", says: "\"Hey! Someone's here! Pack, pay attention!\"", body: "Ears forward, body tall, tail up." },
+  { s: "bark", t: "Attention bark", when: "Single sharp barks with pauses, looking at you", says: "\"Hello? Dinner? Walk? Now?\"", body: "Staring at you or the thing it wants." },
+  { s: "excited", t: "Play & excitement", when: "Higher, bouncy barks and yips", says: "\"Come play with me!\"", body: "Play bow, wiggly body, loose open mouth." },
+  { s: "growl", t: "Warning growl", when: "A low, steady rumble", says: "\"Back off. I'm uncomfortable.\"", body: "Stiff body, hard stare, maybe a lifted lip. Give space and never punish a growl." },
+  { s: "whine", t: "Whine", when: "A high, nasal sound", says: "\"I'm anxious, excited, or I need something.\"", body: "Pacing, lip-licking, or looking at the door." },
+  { s: "howl", t: "Howl", when: "A long, sustained tone, often after sirens", says: "\"I'm here. Where is everyone?\"", body: "Head tilted up. Often social, sometimes loneliness." }
+];
+
 window.QUIZ = [
   { id: "home", q: "Where do you live?", options: [
-    { label: "Apartment / flat", value: "apt" },
-    { label: "House with small yard", value: "small" },
-    { label: "House with big yard / farm", value: "big" }
+    { icon: "🏢", label: "Apartment / flat", value: "apt" },
+    { icon: "🏡", label: "House with a small yard", value: "small" },
+    { icon: "🌳", label: "House with a big yard or farm", value: "big" }
   ]},
   { id: "activity", q: "How active are you?", options: [
-    { label: "Mostly relaxed — short walks", value: 1 },
-    { label: "Moderately active — daily walks", value: 3 },
-    { label: "Very active — running, hiking", value: 5 }
+    { icon: "🛋️", label: "Mostly relaxed: short walks", value: 1 },
+    { icon: "🚶", label: "Moderately active: daily walks", value: 3 },
+    { icon: "🏃", label: "Very active: running, hiking", value: 5 }
   ]},
   { id: "climate", q: "What's your climate like?", options: [
-    { label: "Hot / tropical", value: "hot" },
-    { label: "Moderate", value: "mild" },
-    { label: "Cold", value: "cold" }
+    { icon: "☀️", label: "Hot / tropical", value: "hot" },
+    { icon: "⛅", label: "Moderate", value: "mild" },
+    { icon: "❄️", label: "Cold", value: "cold" }
   ]},
   { id: "experience", q: "Have you had a dog before?", options: [
-    { label: "First-time owner", value: "first" },
-    { label: "Some experience", value: "some" },
-    { label: "Very experienced", value: "pro" }
+    { icon: "🌱", label: "First-time owner", value: "first" },
+    { icon: "👍", label: "Some experience", value: "some" },
+    { icon: "🏆", label: "Very experienced", value: "pro" }
   ]},
   { id: "grooming", q: "How much grooming can you handle?", options: [
-    { label: "Minimal, please", value: 1 },
-    { label: "Weekly brushing is fine", value: 3 },
-    { label: "I enjoy daily grooming", value: 5 }
+    { icon: "🧼", label: "Minimal, please", value: 1 },
+    { icon: "🪮", label: "Weekly brushing is fine", value: 3 },
+    { icon: "💇", label: "I enjoy daily grooming", value: 5 }
+  ]},
+  { id: "noise", q: "How do you feel about barking?", options: [
+    { icon: "🤫", label: "I need a quiet dog", value: 1 },
+    { icon: "🙂", label: "Some barking is OK", value: 3 },
+    { icon: "📢", label: "A vocal watchdog is great", value: 5 }
   ]},
   { id: "kids", q: "Are there young children at home?", options: [
-    { label: "Yes", value: "yes" },
-    { label: "No", value: "no" }
+    { icon: "👶", label: "Yes", value: "yes" },
+    { icon: "🧑", label: "No", value: "no" }
+  ]},
+  { id: "region", q: "Prefer a breed from a particular region?", options: [
+    { icon: "🌐", label: "Any region", value: "" },
+    { icon: "🛕", label: "Native Indian / South Asian breeds", value: "south-asia" },
+    { icon: "🏯", label: "East Asian breeds", value: "east-asia" },
+    { icon: "🏰", label: "European breeds", value: "europe" }
   ]}
+];
+
+/* ---------- Adoption guide ---------- */
+window.READY_QUESTIONS = [
+  "Can you give a dog 2–3 hours of your time every day?",
+  "Does everyone at home want a dog, with no severe allergies?",
+  "Does your landlord or housing society allow dogs?",
+  "Can you afford food, vet care and an emergency fund every month?",
+  "Do you have a plan for the dog when you travel or work late?",
+  "Are you ready for a 10–16 year commitment, through moves and life changes?",
+  "Will you train with patience and rewards, never hitting or shouting?",
+  "Can you accept chewed shoes, accidents and muddy paws during the first months?"
+];
+
+window.JOURNEY = [
+  { t: "Research honestly", d: "Match energy, size, grooming, barking and climate needs to YOUR life, not to looks. Take the Breed Match Quiz and read the breed pages.", tip: "Mixed breeds and Indies are often healthier and fit beautifully into Indian homes." },
+  { t: "Choose where to get your dog", d: "Shelters and rescues (adoption) or a responsible, registered breeder. Never buy from pet shops or online sellers who ship puppies.", tip: "Adoption fees usually include vaccination, deworming and sterilisation." },
+  { t: "Meet the dog (more than once)", d: "Watch how it reacts to you, your family and handling. Meet the mother if it's a puppy. Ask about its health and behaviour history.", tip: "Bring everyone who'll live with the dog, including your current dog if you have one." },
+  { t: "Ask the right questions", d: "Use our 'Ask & red flags' tab: vaccination card, deworming record, temperament, why it was surrendered.", tip: "A good shelter or breeder will ask YOU questions too. That's a great sign." },
+  { t: "Paperwork", d: "Adoption agreement or purchase receipt, vaccination and deworming card, microchip number, and pedigree papers (e.g. KCI) if from a breeder. Register with your municipality if required.", tip: "Keep digital copies on your phone." },
+  { t: "Prepare your home", d: "Buy supplies, set up a quiet resting corner, and puppy-proof: hide wires, medicines, cleaning chemicals and small objects.", tip: "Use the checklist tab to track everything." },
+  { t: "Bring-home day", d: "Pick a calm day when you'll be home for a few days. Go straight to the toilet spot, then let the dog explore one room. Keep visitors away for now.", tip: "Use the same food it was eating, then switch gradually over 7–10 days." },
+  { t: "Vet visit in week 1", d: "General health check, plan vaccines and deworming, start tick prevention, and discuss sterilisation and microchipping.", tip: "Save your vet's and the nearest 24×7 emergency clinic's numbers." },
+  { t: "Settle in with the 3-3-3 rule", d: "Expect 3 days of decompression, 3 weeks of learning the routine, and 3 months to feel truly at home.", tip: "Patience now builds a lifetime of trust." }
+];
+
+window.ASK_LIST = {
+  shelter: [
+    "How old is the dog, and what do you know about its history?",
+    "Why was it surrendered or rescued?",
+    "Is it vaccinated, dewormed and sterilised? Can I see the records?",
+    "How does it behave with kids, cats, other dogs and strangers?",
+    "Any health issues, fears or behaviour quirks?",
+    "Can I foster first, or return it if it truly doesn't work out?"
+  ],
+  breeder: [
+    "Can I meet the mother (and father if possible)?",
+    "Are the parents health-screened (hips, eyes, DNA tests for the breed)?",
+    "How old will the puppy be when it comes home? (Should be at least 8 weeks.)",
+    "Is the litter registered (e.g. with KCI)?",
+    "How have the puppies been socialised?",
+    "Will you take the dog back at any age if I can't keep it?"
+  ],
+  redFlags: [
+    "Won't let you see the mother or where the puppies are raised",
+    "Many breeds for sale or always has puppies (puppy mill)",
+    "Selling puppies younger than 8 weeks",
+    "No vaccination or deworming records",
+    "Offers to deliver or ship the puppy without you visiting",
+    "Pressure to pay quickly, or 'rare colour' premium pricing",
+    "Puppies that look lethargic, thin, with runny eyes or a dirty coat"
+  ]
+};
+
+/* Rough cost ranges. They vary a lot by city, brand and dog, and are meant for planning only. */
+window.COSTS = {
+  INR: {
+    symbol: "₹",
+    monthly: {
+      food: { Toy: [1200, 2500], Small: [1500, 3000], Medium: [3000, 5000], Large: [4500, 8000], Giant: [7000, 12000] },
+      preventive: { Toy: [500, 900], Small: [600, 1000], Medium: [800, 1300], Large: [1000, 1800], Giant: [1500, 2500] },
+      grooming: [[0, 300], [200, 600], [500, 1200], [1000, 2000], [1500, 3000]],
+      toys: [500, 1500],
+      insurance: [300, 1500]
+    },
+    oneTime: {
+      adoption: [0, 5000],
+      vaccines: [4000, 8000],
+      sterilisation: { Toy: [4000, 8000], Small: [5000, 9000], Medium: [6000, 12000], Large: [8000, 15000], Giant: [10000, 20000] },
+      microchip: [1000, 2500],
+      supplies: [5000, 15000]
+    },
+    emergency: [20000, 50000]
+  },
+  USD: {
+    symbol: "$",
+    monthly: {
+      food: { Toy: [20, 40], Small: [25, 50], Medium: [40, 70], Large: [60, 100], Giant: [90, 150] },
+      preventive: { Toy: [25, 45], Small: [30, 50], Medium: [35, 60], Large: [40, 75], Giant: [50, 90] },
+      grooming: [[0, 15], [10, 40], [30, 70], [50, 90], [70, 120]],
+      toys: [15, 40],
+      insurance: [25, 70]
+    },
+    oneTime: {
+      adoption: [50, 400],
+      vaccines: [100, 350],
+      sterilisation: { Toy: [200, 400], Small: [200, 450], Medium: [250, 500], Large: [300, 600], Giant: [350, 700] },
+      microchip: [40, 60],
+      supplies: [200, 500]
+    },
+    emergency: [1000, 2000]
+  }
+};
+
+window.ROUTINE = [
+  ["6:30 am", "Toilet break and short sniff walk"],
+  ["7:30 am", "Breakfast, then rest (no running for an hour)"],
+  ["9 am–12 pm", "Nap, puzzle toy or chew. Practise short alone-time."],
+  ["12:30 pm", "Toilet break plus a 5-minute training game"],
+  ["4 pm", "Play session: fetch, tug or sniffing games"],
+  ["6:30 pm", "Main walk (in cool hours in summer)"],
+  ["7:30 pm", "Dinner, then calm family time"],
+  ["10 pm", "Last toilet break, then bed in its own spot"]
+];
+
+window.TRAINING_BASICS = [
+  { t: "Name & focus", d: "Say its name, reward the moment it looks at you. Practise 10× a day." },
+  { t: "Sit", d: "Lure the nose up with a treat; the bottom goes down. Reward instantly." },
+  { t: "Come (recall)", d: "Run backwards happily calling its name. Big reward every time. Never call it to punish." },
+  { t: "Leave it", d: "Treat in a closed fist; reward from the OTHER hand when it backs off." },
+  { t: "Loose-leash walking", d: "Stop when the leash tightens and move on when it loosens. Reward by your side." },
+  { t: "Settle on a mat", d: "Reward calm lying on a mat. This is the 'off switch' every dog needs." }
 ];

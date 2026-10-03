@@ -1,0 +1,170 @@
+/* ==========================================================================
+   PawPedia Design System — tokens
+   Primitive palette → semantic roles. Components only use semantic tokens,
+   so light/dark themes (and a future Android theme) swap in one place.
+   ========================================================================== */
+
+:root {
+  /* ---- Primitive palette ---- */
+  --teal-50: #ecfdf8;  --teal-100: #d1faef; --teal-200: #a7f3e0; --teal-300: #6ee7cb;
+  --teal-400: #2dd4b0; --teal-500: #14b89a; --teal-600: #0d9480; --teal-700: #0f766a;
+  --teal-800: #115e56; --teal-900: #0b3f3a; --teal-950: #062925;
+
+  --sun-50: #fffbeb;  --sun-100: #fef3c7; --sun-200: #fde68a; --sun-300: #fcd34d;
+  --sun-400: #fbbf24; --sun-500: #f59e0b; --sun-700: #b45309; --sun-900: #4a2a06;
+
+  --coral-50: #fff4f0; --coral-100: #ffe4da; --coral-400: #ff8a65; --coral-500: #f2643d;
+  --coral-600: #dc4a24; --coral-900: #4b1709;
+
+  --sand-0: #ffffff;  --sand-25: #fdfbf8; --sand-50: #f8f4ee; --sand-100: #f0e9df;
+  --sand-200: #e3d9cc; --sand-300: #cfc2b1; --sand-500: #93877a; --sand-600: #6b6158;
+  --sand-700: #4d453e; --sand-800: #332d28; --sand-900: #1f1b17;
+
+  --ink-950: #0c1110; --ink-900: #121a19; --ink-850: #172120; --ink-800: #1d2928;
+  --ink-700: #283736; --ink-600: #3a4c4a;
+
+  --green-600: #15803d; --green-100: #dcfce7;
+  --red-600: #c62828;   --red-100: #fde4e4;
+  --amber-700: #a35c00; --amber-100: #fdf0d5;
+
+  /* ---- Typography ---- */
+  --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-2xs: 0.6875rem; --fs-xs: 0.75rem; --fs-sm: 0.875rem; --fs-base: 1rem;
+  --fs-md: 1.125rem; --fs-lg: 1.375rem; --fs-xl: 1.75rem; --fs-2xl: 2.25rem;
+  --fs-hero: clamp(2.1rem, 5.2vw, 3.4rem);
+  --lh-tight: 1.12; --lh-snug: 1.3; --lh-body: 1.6;
+  --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600; --fw-bold: 700; --fw-black: 800;
+
+  /* ---- Spacing (4px grid) ---- */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+  --sp-6: 24px; --sp-7: 32px; --sp-8: 40px; --sp-9: 56px; --sp-10: 72px;
+
+  /* ---- Shape ---- */
+  --r-xs: 6px; --r-sm: 10px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --ease-bounce: cubic-bezier(.3, 1.5, .5, 1);
+  --dur-fast: 120ms; --dur: 220ms; --dur-slow: 420ms;
+
+  /* ---- Layout ---- */
+  --container: 1180px;
+  --appbar-h: 64px;
+  --tabbar-h: 68px;
+}
+
+/* ---- Semantic roles: light ---- */
+:root, :root[data-theme="light"] {
+  color-scheme: light;
+  --bg: var(--sand-50);
+  --bg-accent: radial-gradient(1200px 500px at 85% -10%, #d7f6ee 0%, transparent 60%), radial-gradient(900px 420px at -10% 10%, #fff1d6 0%, transparent 55%);
+  --surface: var(--sand-0);
+  --surface-2: var(--sand-25);
+  --surface-3: var(--sand-100);
+  --surface-inverse: var(--teal-900);
+  --text: var(--sand-900);
+  --text-2: var(--sand-600);
+  --text-3: var(--sand-500);
+  --text-inverse: #f3fffb;
+  --border: var(--sand-200);
+  --border-strong: var(--sand-300);
+
+  --primary: var(--teal-700);
+  --primary-hover: var(--teal-800);
+  --on-primary: #ffffff;
+  --primary-container: var(--teal-100);
+  --on-primary-container: var(--teal-900);
+
+  --accent: var(--sun-400);
+  --accent-container: var(--sun-100);
+  --on-accent-container: var(--sun-900);
+
+  --love: var(--coral-500);
+  --love-container: var(--coral-100);
+  --on-love-container: var(--coral-900);
+
+  --success: var(--green-600);  --success-container: var(--green-100);
+  --warning: var(--amber-700);  --warning-container: var(--amber-100);
+  --danger: var(--red-600);     --danger-container: var(--red-100);
+
+  --focus: var(--sun-500);
+  --scrim: rgba(20, 16, 12, 0.45);
+  --glass: rgba(248, 244, 238, 0.82);
+
+  --shadow-sm: 0 1px 2px rgba(51, 45, 40, .06), 0 1px 1px rgba(51, 45, 40, .04);
+  --shadow-md: 0 6px 20px -6px rgba(51, 45, 40, .18), 0 2px 6px rgba(51, 45, 40, .06);
+  --shadow-lg: 0 24px 50px -16px rgba(15, 60, 55, .32);
+}
+
+/* ---- Semantic roles: dark ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: var(--ink-950);
+    --bg-accent: radial-gradient(1100px 500px at 85% -10%, rgba(20, 184, 154, .16) 0%, transparent 60%), radial-gradient(900px 420px at -10% 10%, rgba(251, 191, 36, .08) 0%, transparent 55%);
+    --surface: var(--ink-900);
+    --surface-2: var(--ink-850);
+    --surface-3: var(--ink-800);
+    --surface-inverse: var(--teal-200);
+    --text: #eef6f4;
+    --text-2: #a9bbb8;
+    --text-3: #7f9592;
+    --text-inverse: var(--teal-950);
+    --border: var(--ink-700);
+    --border-strong: var(--ink-600);
+    --primary: var(--teal-400);
+    --primary-hover: var(--teal-300);
+    --on-primary: var(--teal-950);
+    --primary-container: rgba(45, 212, 176, .14);
+    --on-primary-container: var(--teal-200);
+    --accent: var(--sun-300);
+    --accent-container: rgba(251, 191, 36, .14);
+    --on-accent-container: var(--sun-200);
+    --love: var(--coral-400);
+    --love-container: rgba(255, 138, 101, .14);
+    --on-love-container: var(--coral-100);
+    --success: #4ade80;  --success-container: rgba(74, 222, 128, .12);
+    --warning: #fbbf24;  --warning-container: rgba(251, 191, 36, .12);
+    --danger: #f87171;   --danger-container: rgba(248, 113, 113, .13);
+    --scrim: rgba(0, 0, 0, .6);
+    --glass: rgba(12, 17, 16, .8);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+    --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, .6);
+    --shadow-lg: 0 24px 50px -16px rgba(0, 0, 0, .7);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: var(--ink-950);
+  --bg-accent: radial-gradient(1100px 500px at 85% -10%, rgba(20, 184, 154, .16) 0%, transparent 60%), radial-gradient(900px 420px at -10% 10%, rgba(251, 191, 36, .08) 0%, transparent 55%);
+  --surface: var(--ink-900);
+  --surface-2: var(--ink-850);
+  --surface-3: var(--ink-800);
+  --surface-inverse: var(--teal-200);
+  --text: #eef6f4;
+  --text-2: #a9bbb8;
+  --text-3: #7f9592;
+  --text-inverse: var(--teal-950);
+  --border: var(--ink-700);
+  --border-strong: var(--ink-600);
+  --primary: var(--teal-400);
+  --primary-hover: var(--teal-300);
+  --on-primary: var(--teal-950);
+  --primary-container: rgba(45, 212, 176, .14);
+  --on-primary-container: var(--teal-200);
+  --accent: var(--sun-300);
+  --accent-container: rgba(251, 191, 36, .14);
+  --on-accent-container: var(--sun-200);
+  --love: var(--coral-400);
+  --love-container: rgba(255, 138, 101, .14);
+  --on-love-container: var(--coral-100);
+  --success: #4ade80;  --success-container: rgba(74, 222, 128, .12);
+  --warning: #fbbf24;  --warning-container: rgba(251, 191, 36, .12);
+  --danger: #f87171;   --danger-container: rgba(248, 113, 113, .13);
+  --scrim: rgba(0, 0, 0, .6);
+  --glass: rgba(12, 17, 16, .8);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, .6);
+  --shadow-lg: 0 24px 50px -16px rgba(0, 0, 0, .7);
+}

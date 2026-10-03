@@ -3,357 +3,166 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>PawPedia — Learn, Love & Care for Dogs</title>
-  <meta name="description" content="PawPedia: learn dog breeds, what they love to play and eat, safe and toxic foods, the puppy-to-senior timeline, health issues and how to be a great dog parent. Hear different barks and find your perfect dog.">
-  <meta name="theme-color" content="#e86a33">
+  <title>PawPedia — Dog Breeds, Barks, Care & Adoption Guide</title>
+  <meta name="description" content="Explore 51 dog breeds from every region with real photos and sounds. Hear what each breed's bark means, follow its life from puppy to senior, learn about food, health and how to adopt and be a great dog parent.">
+  <meta name="theme-color" content="#0f766a">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/icons/icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/styles.css">
+  <script>
+    try { const t = localStorage.getItem("pp-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-paw" viewBox="0 0 24 24"><g fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2"/><ellipse cx="5.5" cy="10.5" rx="2.1" ry="2.7" transform="rotate(-20 5.5 10.5)"/><ellipse cx="9.3" cy="6.4" rx="2.1" ry="2.9"/><ellipse cx="14.7" cy="6.4" rx="2.1" ry="2.9"/><ellipse cx="18.5" cy="10.5" rx="2.1" ry="2.7" transform="rotate(20 18.5 10.5)"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></g></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 10v4M8 6v12M12 9v6M16 4v16M20 9v6"/></g></symbol>
+    <symbol id="i-care" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 12h2.3l1.2-2 1.6 4 1.1-2H16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.9-8-11A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8 2.9c0 6.1-8 11-8 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></g></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.2-6.5a1 1 0 0 0 0-1.7L9.5 4.6A1 1 0 0 0 8 5.5z" fill="currentColor"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  </svg>
+
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="topbar">
+  <header class="appbar">
     <a class="brand" href="#home" aria-label="PawPedia home">
-      <span class="brand-mark" aria-hidden="true">🐾</span>
-      <span>PawPedia</span>
+      <span class="brand-mark" aria-hidden="true"><svg style="color:#fff"><use href="#i-paw"/></svg></span>
+      <span>Paw<b>Pedia</b></span>
     </a>
     <nav class="topnav" aria-label="Main">
       <a href="#breeds" data-nav="breeds">Breeds</a>
       <a href="#bark" data-nav="bark">Bark Lab</a>
-      <a href="#timeline" data-nav="timeline">Life Timeline</a>
+      <a href="#timeline" data-nav="timeline">Life Stages</a>
       <a href="#health" data-nav="health">Health</a>
-      <a href="#food" data-nav="food">Food Guide</a>
-      <a href="#adopt" data-nav="adopt">Adopt</a>
+      <a href="#food" data-nav="food">Food</a>
+      <a href="#adopt" data-nav="adopt">Adoption Guide</a>
       <a href="#quiz" data-nav="quiz">Breed Quiz</a>
-      <a href="#services" data-nav="services" class="cta">Get a Dog</a>
+      <a href="#services" data-nav="services">Get a Dog</a>
     </nav>
+    <a class="icon-btn" href="#breeds" id="search-btn" aria-label="Search breeds"><svg><use href="#i-search"/></svg></a>
+    <button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle dark mode"><svg><use href="#i-moon"/></svg></button>
   </header>
 
   <main id="main" tabindex="-1">
-    <!-- Home -->
-    <section class="view" id="view-home" data-view="home">
-      <div class="hero">
-        <div class="hero-text">
-          <p class="eyebrow">Your pocket guide to dogs</p>
-          <h1>Learn, love &amp; care for your best friend.</h1>
-          <p class="lead">Find out what dogs love to play, what they can eat, how they grow from puppy to senior, which health issues to watch for, and how to be a great dog parent.</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#breeds">Explore breeds</a>
-            <a class="btn ghost" href="#quiz">Find my perfect dog</a>
-          </div>
-        </div>
-        <button class="hero-dog" id="hero-dog" type="button" aria-label="Tap the dog to hear it bark">
-          <span class="dog-holder" data-dog data-color="#d9a441"></span>
-          <span class="bubble" aria-hidden="true">Tap me! 🐾</span>
-        </button>
+    <section class="view" data-view="home" id="view-home"></section>
+    <section class="view" data-view="breeds" id="view-breeds" hidden></section>
+    <section class="view" data-view="breed" id="view-breed" hidden></section>
+    <section class="view" data-view="bark" id="view-bark" hidden></section>
+    <section class="view" data-view="timeline" id="view-timeline" hidden></section>
+    <section class="view" data-view="health" id="view-health" hidden></section>
+    <section class="view" data-view="food" id="view-food" hidden></section>
+    <section class="view" data-view="adopt" id="view-adopt" hidden></section>
+    <section class="view" data-view="quiz" id="view-quiz" hidden></section>
+    <section class="view" data-view="credits" id="view-credits" hidden></section>
+
+    <!-- Services: static markup so Netlify Forms can detect the forms at deploy time -->
+    <section class="view" data-view="services" id="view-services" hidden>
+      <div class="page-head">
+        <span class="eyebrow">Get a dog · Shop · Services</span>
+        <h1>Find your dog &amp; everything it needs</h1>
+        <p class="lead">Tell us what you're looking for and our team will get back to you, usually within 24 hours.</p>
       </div>
 
-      <div class="fact card">
-        <span class="fact-icon" aria-hidden="true">💡</span>
-        <div>
-          <strong>Did you know?</strong>
-          <p id="fact-text"></p>
-        </div>
-        <button class="btn small ghost" id="fact-next" type="button">Next fact</button>
-      </div>
-
-      <h2 class="section-title">Everything about dogs</h2>
-      <div class="tiles">
-        <a class="tile" href="#breeds"><span>🐕</span><b>Breed Encyclopedia</b><small>Play, behaviour, food, climate &amp; more</small></a>
-        <a class="tile" href="#bark"><span>🔊</span><b>Bark Lab</b><small>Hear barks &amp; learn what they mean</small></a>
-        <a class="tile" href="#timeline"><span>📈</span><b>Life Timeline</b><small>From newborn puppy to senior</small></a>
-        <a class="tile" href="#health"><span>🩺</span><b>Health &amp; Issues</b><small>Signs, prevention &amp; what to do</small></a>
-        <a class="tile" href="#food"><span>🍗</span><b>Food Guide</b><small>Safe, moderate &amp; toxic foods</small></a>
-        <a class="tile" href="#adopt"><span>🏡</span><b>Adoption Guide</b><small>How to be a good dog parent</small></a>
-        <a class="tile" href="#quiz"><span>🎯</span><b>Breed Match Quiz</b><small>Which dog fits your life?</small></a>
-        <a class="tile accent" href="#services"><span>❤️</span><b>Get a Dog</b><small>Send us a query, we'll help</small></a>
-      </div>
-
-      <div class="promo card">
-        <div>
-          <span class="badge">Coming soon</span>
-          <h3>PawPedia Food Shop 🛒</h3>
-          <p>Vet-approved dog food, treats and essentials delivered to your door. Join the waitlist for launch offers.</p>
-        </div>
-        <a class="btn primary" href="#services/shop">Notify me</a>
-      </div>
-    </section>
-
-    <!-- Breeds list -->
-    <section class="view" id="view-breeds" data-view="breeds" hidden>
-      <h1>Breed Encyclopedia</h1>
-      <p class="lead">Tap a breed to see what it loves, how it behaves, what it eats, its ideal temperature and common health issues.</p>
-      <div class="toolbar">
-        <input type="search" id="breed-search" placeholder="Search breeds…" aria-label="Search breeds">
-        <select id="breed-size" aria-label="Filter by size">
-          <option value="">All sizes</option>
-          <option value="Toy">Toy</option>
-          <option value="Small">Small</option>
-          <option value="Medium">Medium</option>
-          <option value="Large">Large</option>
-        </select>
-      </div>
-      <div class="breed-grid" id="breed-grid"></div>
-    </section>
-
-    <!-- Breed detail -->
-    <section class="view" id="view-breed" data-view="breed" hidden>
-      <div id="breed-detail"></div>
-    </section>
-
-    <!-- Bark lab -->
-    <section class="view" id="view-bark" data-view="bark" hidden>
-      <h1>Bark Lab 🔊</h1>
-      <p class="lead">Dogs "talk" with barks, howls, whines and growls. Tap to hear each one and learn what your dog may be trying to say. Turn your volume up!</p>
-      <div class="bark-stage card">
-        <div class="dog-holder big" id="bark-dog" data-dog data-color="#c98a4b"></div>
-        <div class="bark-controls">
-          <label for="bark-voice">Dog size</label>
-          <div class="seg" role="radiogroup" id="bark-voice">
-            <button type="button" role="radio" data-voice="small" aria-checked="false">Small</button>
-            <button type="button" role="radio" data-voice="medium" aria-checked="true">Medium</button>
-            <button type="button" role="radio" data-voice="deep" aria-checked="false">Large</button>
-          </div>
-          <div class="bark-buttons">
-            <button class="btn primary" type="button" data-bark="single">Woof!</button>
-            <button class="btn primary" type="button" data-bark="double">Woof woof!</button>
-          </div>
-        </div>
-      </div>
-      <h2 class="section-title">What does that bark mean?</h2>
-      <div class="bark-grid" id="bark-grid"></div>
-      <p class="note">Context matters: look at the tail, ears and body posture together with the sound. A wagging tail doesn't always mean a happy dog.</p>
-    </section>
-
-    <!-- Timeline -->
-    <section class="view" id="view-timeline" data-view="timeline" hidden>
-      <h1>Life Timeline 📈</h1>
-      <p class="lead">See how a dog looks, behaves and what it needs at every stage of life. Drag the slider or tap a stage.</p>
-      <div class="timeline card">
-        <div class="timeline-visual">
-          <div class="dog-holder big" id="timeline-dog" data-dog data-color="#d9a441"></div>
-        </div>
-        <input type="range" id="timeline-range" min="0" max="6" step="1" value="0" aria-label="Life stage">
-        <ol class="stage-dots" id="stage-dots"></ol>
-        <div id="stage-info" class="stage-info" aria-live="polite"></div>
-      </div>
-
-      <div class="card age-calc">
-        <h2>🎂 Dog age in human years</h2>
-        <div class="calc-row">
-          <label>Age (years)
-            <input type="number" id="age-years" min="0" max="25" step="0.5" value="3">
-          </label>
-          <label>Size
-            <select id="age-size">
-              <option value="small">Small (&lt;10 kg)</option>
-              <option value="medium" selected>Medium (10–25 kg)</option>
-              <option value="large">Large (25–45 kg)</option>
-              <option value="giant">Giant (&gt;45 kg)</option>
-            </select>
-          </label>
-        </div>
-        <p class="age-result" id="age-result" aria-live="polite"></p>
-        <p class="note">This is an estimate. Larger dogs age faster after their first two years.</p>
-      </div>
-    </section>
-
-    <!-- Health -->
-    <section class="view" id="view-health" data-view="health" hidden>
-      <h1>Health Issues &amp; How to Overcome Them 🩺</h1>
-      <p class="lead">Know the warning signs early. Emergencies need a vet <strong>immediately</strong>.</p>
-      <div class="chips" id="health-filter" role="group" aria-label="Filter by type">
-        <button type="button" class="chip active" data-sev="">All</button>
-        <button type="button" class="chip" data-sev="Emergency">🚨 Emergency</button>
-        <button type="button" class="chip" data-sev="Common">Common</button>
-        <button type="button" class="chip" data-sev="Chronic">Chronic</button>
-        <button type="button" class="chip" data-sev="Behavioural">Behavioural</button>
-      </div>
-      <div class="health-list" id="health-list"></div>
-      <div class="card vaccine">
-        <h2>💉 Typical puppy vaccination &amp; care schedule</h2>
-        <table>
-          <thead><tr><th>Age</th><th>What</th></tr></thead>
-          <tbody>
-            <tr><td>2, 4, 6, 8 weeks</td><td>Deworming (then every 3 months for adults)</td></tr>
-            <tr><td>6–8 weeks</td><td>1st core vaccine: DHPPi + Leptospirosis</td></tr>
-            <tr><td>9–12 weeks</td><td>2nd DHPPi + L booster</td></tr>
-            <tr><td>12–14 weeks</td><td>Anti-rabies vaccine + 3rd booster</td></tr>
-            <tr><td>Every year</td><td>Booster vaccines + health check</td></tr>
-            <tr><td>Monthly</td><td>Tick &amp; flea prevention</td></tr>
-          </tbody>
-        </table>
-        <p class="note">Schedules vary by country and vet. Always follow your veterinarian's plan.</p>
-      </div>
-      <p class="disclaimer">PawPedia is for education only and is not a substitute for professional veterinary advice.</p>
-    </section>
-
-    <!-- Food -->
-    <section class="view" id="view-food" data-view="food" hidden>
-      <h1>Food Guide 🍗</h1>
-      <p class="lead">Can my dog eat this? Search any food to find out.</p>
-      <div class="toolbar">
-        <input type="search" id="food-search" placeholder="e.g. chocolate, mango, curd…" aria-label="Search foods">
-      </div>
-      <div class="chips" id="food-filter" role="group" aria-label="Filter foods">
-        <button type="button" class="chip active" data-verdict="">All</button>
-        <button type="button" class="chip safe" data-verdict="safe">✅ Safe</button>
-        <button type="button" class="chip moderate" data-verdict="moderate">⚠️ In moderation</button>
-        <button type="button" class="chip toxic" data-verdict="toxic">⛔ Toxic</button>
-      </div>
-      <div class="food-list" id="food-list"></div>
-      <div class="card tips">
-        <h2>Feeding golden rules</h2>
-        <ul>
-          <li>Treats should make up no more than <strong>10%</strong> of daily calories.</li>
-          <li>Switch foods gradually over <strong>7–10 days</strong> to avoid an upset stomach.</li>
-          <li>Fresh, clean water must <strong>always</strong> be available.</li>
-          <li>Puppies need puppy food. Large-breed puppies need large-breed formulas.</li>
-          <li>If your dog eats something toxic, call your vet right away. Don't wait for symptoms.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Adopt -->
-    <section class="view" id="view-adopt" data-view="adopt" hidden>
-      <h1>Adopting a Dog: Be a Great Dog Parent 🏡</h1>
-      <p class="lead">A dog is a 10–15 year commitment. Work through this checklist. Your progress is saved on this device.</p>
-      <div class="progress card">
-        <div class="progress-bar"><span id="adopt-progress-bar"></span></div>
-        <p id="adopt-progress-text"></p>
-      </div>
-      <div id="adopt-list"></div>
-      <div class="card tips">
-        <h2>Adopt, don't shop? 💛</h2>
-        <p>Millions of healthy, loving dogs (including Indies) wait in shelters. Adopted dogs are often already vaccinated and sterilised. If you buy, choose a responsible breeder who health-tests the parents, lets you meet the mother, and never sells puppies younger than 8 weeks.</p>
-        <a class="btn primary" href="#services">Ask us to help you find a dog</a>
-      </div>
-    </section>
-
-    <!-- Quiz -->
-    <section class="view" id="view-quiz" data-view="quiz" hidden>
-      <h1>Breed Match Quiz 🎯</h1>
-      <p class="lead">Answer 6 quick questions and we'll suggest breeds that fit your lifestyle.</p>
-      <form id="quiz-form" class="card quiz"></form>
-      <div id="quiz-result"></div>
-    </section>
-
-    <!-- Services / revenue -->
-    <section class="view" id="view-services" data-view="services" hidden>
-      <h1>Get a Dog &amp; Services ❤️</h1>
-      <p class="lead">Want a dog, food or care services? Tell us what you need and our team will get back to you.</p>
-
-      <div class="service-grid">
-        <article class="service card highlight" id="svc-get">
-          <span class="svc-icon">🐶</span>
+      <div class="svc-grid">
+        <article class="card svc highlight" id="svc-get">
+          <div class="svc-ic">🐶</div>
           <h2>Want to get a dog?</h2>
-          <p>Adopt or buy from verified shelters and health-tested breeders. Send a query and we'll match you with the right dog.</p>
+          <p class="muted">Adopt from verified shelters or buy from health-tested, registered breeders. We'll match you with the right dog for your home.</p>
           <form name="dog-query" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field" class="form" data-ajax>
             <input type="hidden" name="form-name" value="dog-query">
             <p class="hp"><label>Don't fill this: <input name="bot-field"></label></p>
-            <label>Your name<input name="name" required autocomplete="name"></label>
+            <div class="field"><label for="q-name">Your name</label><input id="q-name" name="name" required autocomplete="name"></div>
             <div class="row2">
-              <label>Phone<input name="phone" type="tel" required autocomplete="tel" pattern="[0-9+\-\s]{7,15}"></label>
-              <label>Email<input name="email" type="email" autocomplete="email"></label>
+              <div class="field"><label for="q-phone">Phone</label><input id="q-phone" name="phone" type="tel" required autocomplete="tel" pattern="[0-9+\-\s]{7,15}"></div>
+              <div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email"></div>
             </div>
             <div class="row2">
-              <label>City<input name="city" required autocomplete="address-level2"></label>
-              <label>Preferred breed
-                <select name="breed" id="query-breed">
-                  <option value="Not sure — please suggest">Not sure — please suggest</option>
-                </select>
-              </label>
+              <div class="field"><label for="q-city">City</label><input id="q-city" name="city" required autocomplete="address-level2"></div>
+              <div class="field"><label for="query-breed">Preferred breed</label>
+                <select name="breed" id="query-breed"><option value="Not sure — please suggest">Not sure — please suggest</option></select>
+              </div>
             </div>
             <div class="row2">
-              <label>I want to
-                <select name="intent">
-                  <option>Adopt</option>
-                  <option>Buy from a breeder</option>
-                  <option>Either</option>
-                </select>
-              </label>
-              <label>Puppy or adult?
-                <select name="age-preference">
-                  <option>Puppy</option>
-                  <option>Adult</option>
-                  <option>No preference</option>
-                </select>
-              </label>
+              <div class="field"><label for="q-intent">I want to</label>
+                <select id="q-intent" name="intent"><option>Adopt</option><option>Buy from a breeder</option><option>Either</option></select>
+              </div>
+              <div class="field"><label for="q-age">Puppy or adult?</label>
+                <select id="q-age" name="age-preference"><option>Puppy</option><option>Adult</option><option>No preference</option></select>
+              </div>
             </div>
-            <label>Anything else? (home, family, budget)<textarea name="message" rows="3"></textarea></label>
+            <div class="field"><label for="q-msg">Anything else? (home, family, budget)</label><textarea id="q-msg" name="message" rows="3"></textarea></div>
             <button class="btn primary block" type="submit">Send my query</button>
             <p class="form-status" role="status"></p>
           </form>
         </article>
 
-        <article class="service card" id="svc-shop">
+        <article class="card svc" id="svc-shop">
           <span class="badge">Coming soon</span>
-          <span class="svc-icon">🛒</span>
-          <h2>Dog Food Shop</h2>
-          <p>Vet-approved dry and wet food, healthy treats, toys and accessories, delivered to your door. Join the waitlist for early-bird discounts.</p>
+          <div class="svc-ic">🛒</div>
+          <h2>PawPedia Food Shop</h2>
+          <p class="muted">Vet-approved dry and wet food, healthy treats, toys and accessories, delivered to your door. Join the waitlist for early-bird discounts.</p>
           <form name="shop-waitlist" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field" class="form" data-ajax>
             <input type="hidden" name="form-name" value="shop-waitlist">
             <p class="hp"><label>Don't fill this: <input name="bot-field"></label></p>
-            <label>Email or phone<input name="contact" required></label>
-            <label>What would you buy?
-              <select name="interest">
-                <option>Dry food (kibble)</option>
-                <option>Wet / fresh food</option>
-                <option>Treats &amp; chews</option>
-                <option>Toys &amp; accessories</option>
-                <option>Monthly subscription box</option>
+            <div class="field"><label for="s-contact">Email or phone</label><input id="s-contact" name="contact" required></div>
+            <div class="field"><label for="s-int">What would you buy?</label>
+              <select id="s-int" name="interest">
+                <option>Dry food (kibble)</option><option>Wet / fresh food</option><option>Treats &amp; chews</option><option>Toys &amp; accessories</option><option>Monthly subscription box</option>
               </select>
-            </label>
+            </div>
+            <div class="field"><label for="s-breed">My dog's breed (optional)</label><input id="s-breed" name="dog-breed"></div>
             <button class="btn primary block" type="submit">Notify me at launch</button>
             <p class="form-status" role="status"></p>
           </form>
         </article>
       </div>
 
-      <h2 class="section-title">More services</h2>
-      <div class="more-grid">
-        <div class="mini card"><span>🩺</span><b>Online vet consult</b><small>Talk to a vet from home</small><button class="btn small ghost" data-interest="Online vet consult" type="button">I'm interested</button></div>
-        <div class="mini card"><span>✂️</span><b>Grooming at home</b><small>Bath, haircut, nails &amp; ears</small><button class="btn small ghost" data-interest="Grooming at home" type="button">I'm interested</button></div>
-        <div class="mini card"><span>🎓</span><b>Training classes</b><small>Puppy &amp; obedience training</small><button class="btn small ghost" data-interest="Training classes" type="button">I'm interested</button></div>
-        <div class="mini card"><span>🏨</span><b>Boarding &amp; sitting</b><small>Trusted care while you travel</small><button class="btn small ghost" data-interest="Boarding & pet sitting" type="button">I'm interested</button></div>
-        <div class="mini card"><span>🛡️</span><b>Pet insurance</b><small>Cover vet bills &amp; emergencies</small><button class="btn small ghost" data-interest="Pet insurance" type="button">I'm interested</button></div>
-        <div class="mini card"><span>⭐</span><b>PawPedia Premium</b><small>Diet plans &amp; expert guides</small><button class="btn small ghost" data-interest="PawPedia Premium" type="button">I'm interested</button></div>
+      <div class="section">
+        <div class="section-head"><h2>More services</h2></div>
+        <div class="mini-grid">
+          <div class="card mini"><span class="card-ic">🩺</span><b>Online vet consult</b><small>Talk to a vet from home</small><button class="btn sm outline" data-interest="Online vet consult" type="button">I'm interested</button></div>
+          <div class="card mini"><span class="card-ic">✂️</span><b>Grooming at home</b><small>Bath, haircut, nails &amp; ears</small><button class="btn sm outline" data-interest="Grooming at home" type="button">I'm interested</button></div>
+          <div class="card mini"><span class="card-ic">🎓</span><b>Training classes</b><small>Puppy &amp; obedience training</small><button class="btn sm outline" data-interest="Training classes" type="button">I'm interested</button></div>
+          <div class="card mini"><span class="card-ic">🏨</span><b>Boarding &amp; sitting</b><small>Trusted care while you travel</small><button class="btn sm outline" data-interest="Boarding & pet sitting" type="button">I'm interested</button></div>
+          <div class="card mini"><span class="card-ic">🛡️</span><b>Pet insurance</b><small>Cover vet bills &amp; emergencies</small><button class="btn sm outline" data-interest="Pet insurance" type="button">I'm interested</button></div>
+          <div class="card mini"><span class="card-ic">⭐</span><b>PawPedia Premium</b><small>Diet plans &amp; expert guides</small><button class="btn sm outline" data-interest="PawPedia Premium" type="button">I'm interested</button></div>
+        </div>
       </div>
 
-      <article class="service card" id="svc-partner">
-        <span class="svc-icon">🤝</span>
+      <article class="card svc section" id="svc-partner">
+        <div class="svc-ic">🤝</div>
         <h2>Partner with PawPedia</h2>
-        <p>Are you a shelter, breeder, vet, groomer, trainer or pet brand? List your services and reach dog lovers.</p>
+        <p class="muted">Are you a shelter, breeder, vet, groomer, trainer or pet brand? List your services and reach dog lovers. Interested in a service above? Send us a note here too.</p>
         <form name="partner-enquiry" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field" class="form" data-ajax>
           <input type="hidden" name="form-name" value="partner-enquiry">
           <p class="hp"><label>Don't fill this: <input name="bot-field"></label></p>
           <div class="row2">
-            <label>Name / business<input name="name" required></label>
-            <label>Phone or email<input name="contact" required></label>
+            <div class="field"><label for="p-name">Name / business</label><input id="p-name" name="name" required></div>
+            <div class="field"><label for="p-contact">Phone or email</label><input id="p-contact" name="contact" required></div>
           </div>
-          <label>I am / I want
-            <select name="type" id="partner-type">
-              <option>Shelter / rescue</option>
-              <option>Breeder</option>
-              <option>Veterinarian</option>
-              <option>Groomer</option>
-              <option>Trainer</option>
-              <option>Pet brand / advertiser</option>
-              <option>Customer — Online vet consult</option>
-              <option>Customer — Grooming at home</option>
-              <option>Customer — Training classes</option>
-              <option>Customer — Boarding &amp; pet sitting</option>
-              <option>Customer — Pet insurance</option>
-              <option>Customer — PawPedia Premium</option>
-            </select>
-          </label>
-          <label>City<input name="city"></label>
-          <label>Message<textarea name="message" rows="3"></textarea></label>
+          <div class="row2">
+            <div class="field"><label for="partner-type">I am / I want</label>
+              <select name="type" id="partner-type">
+                <option>Shelter / rescue</option><option>Breeder</option><option>Veterinarian</option><option>Groomer</option><option>Trainer</option><option>Pet brand / advertiser</option>
+                <option>Customer — Online vet consult</option><option>Customer — Grooming at home</option><option>Customer — Training classes</option><option>Customer — Boarding &amp; pet sitting</option><option>Customer — Pet insurance</option><option>Customer — PawPedia Premium</option>
+              </select>
+            </div>
+            <div class="field"><label for="p-city">City</label><input id="p-city" name="city"></div>
+          </div>
+          <div class="field"><label for="p-msg">Message</label><textarea id="p-msg" name="message" rows="3"></textarea></div>
           <button class="btn primary block" type="submit">Send</button>
           <p class="form-status" role="status"></p>
         </form>
@@ -361,32 +170,53 @@
     </section>
   </main>
 
+  <footer class="footer">
+    <p>🐾 PawPedia: learn, love &amp; care for dogs. Educational content only; always consult a qualified veterinarian.</p>
+    <nav aria-label="Footer"><a href="#adopt">Adoption guide</a><a href="#services">Get a dog</a><a href="#credits">Photo &amp; sound credits</a></nav>
+  </footer>
+
   <nav class="tabbar" aria-label="Quick navigation">
-    <a href="#home" data-nav="home"><span>🏠</span>Home</a>
-    <a href="#breeds" data-nav="breeds"><span>🐕</span>Breeds</a>
-    <a href="#bark" data-nav="bark"><span>🔊</span>Bark</a>
-    <a href="#care" data-nav="care" id="care-tab"><span>🩺</span>Care</a>
-    <a href="#services" data-nav="services"><span>❤️</span>Get a Dog</a>
+    <a href="#home" data-nav="home"><span class="ti"><svg><use href="#i-home"/></svg></span>Home</a>
+    <a href="#breeds" data-nav="breeds"><span class="ti"><svg><use href="#i-grid"/></svg></span>Breeds</a>
+    <a href="#bark" data-nav="bark"><span class="ti"><svg><use href="#i-wave"/></svg></span>Bark Lab</a>
+    <a href="#care" data-nav="care" id="care-tab"><span class="ti"><svg><use href="#i-care"/></svg></span>Care</a>
+    <a href="#services" data-nav="services"><span class="ti"><svg><use href="#i-heart" style="fill:none"/></svg></span>Get a Dog</a>
   </nav>
 
   <div class="sheet" id="care-sheet" hidden>
     <div class="sheet-panel" role="dialog" aria-modal="true" aria-label="Care topics">
-      <a href="#timeline">📈 Life Timeline</a>
-      <a href="#health">🩺 Health &amp; Issues</a>
-      <a href="#food">🍗 Food Guide</a>
-      <a href="#adopt">🏡 Adoption Guide</a>
-      <a href="#quiz">🎯 Breed Match Quiz</a>
+      <div class="grabber"></div>
+      <div class="sheet-links">
+        <a href="#timeline"><span>📈</span><div>Life Stages<small>Puppy to senior, for any breed</small></div></a>
+        <a href="#adopt"><span>🏡</span><div>Adoption Guide<small>Readiness, costs, steps &amp; first 30 days</small></div></a>
+        <a href="#health"><span>🩺</span><div>Health &amp; Issues<small>Signs, prevention &amp; emergencies</small></div></a>
+        <a href="#food"><span>🍗</span><div>Food Guide<small>Safe, in moderation &amp; toxic foods</small></div></a>
+        <a href="#quiz"><span>🎯</span><div>Breed Match Quiz<small>Find a dog that fits your life</small></div></a>
+      </div>
     </div>
   </div>
 
-  <footer class="footer">
-    <p>🐾 PawPedia · Made with love for dogs and their humans</p>
-    <p class="disclaimer">Educational content only. Always consult a qualified veterinarian.</p>
-  </footer>
+  <div class="sheet" id="picker-sheet" hidden>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="picker-title">
+      <div class="grabber"></div>
+      <div class="sheet-title"><h2 id="picker-title">Choose a breed</h2><button class="icon-btn" type="button" data-close aria-label="Close"><svg><use href="#i-close"/></svg></button></div>
+      <label class="search"><svg><use href="#i-search"/></svg><input type="search" id="picker-search" placeholder="Search 51 breeds…" aria-label="Search breeds"></label>
+      <div class="picker-list" id="picker-list"></div>
+    </div>
+  </div>
 
+  <div class="sheet viewer3d" id="model-sheet" hidden>
+    <div class="viewer-panel" role="dialog" aria-modal="true" aria-labelledby="model-title">
+      <div class="viewer-top"><button class="icon-btn" type="button" data-close aria-label="Close 3D viewer"><svg><use href="#i-close"/></svg></button><b id="model-title"></b><span></span></div>
+      <div id="model-slot"></div>
+    </div>
+  </div>
+
+  <script src="/js/breeds.js"></script>
   <script src="/js/data.js"></script>
-  <script src="/js/dog.js"></script>
-  <script src="/js/bark.js"></script>
+  <script src="/js/credits.js"></script>
+  <script src="/js/models.js"></script>
+  <script src="/js/sounds.js"></script>
   <script src="/js/app.js"></script>
 </body>
 </html>
