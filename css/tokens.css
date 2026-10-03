@@ -27,6 +27,12 @@
   --red-600: #c62828;   --red-100: #fde4e4;
   --amber-700: #a35c00; --amber-100: #fdf0d5;
 
+  /* ---- Studio backdrops (product-photo style) ---- */
+  --studio-light: radial-gradient(130% 95% at 50% 26%, #ffffff 0%, #f7f4ef 52%, #e9e2d7 100%);
+  --studio-dark: radial-gradient(130% 95% at 50% 26%, #474c53 0%, #272b30 52%, #131518 100%);
+  --studio-light-shadow: rgba(60, 42, 25, .38);
+  --studio-dark-shadow: rgba(0, 0, 0, .75);
+
   /* ---- Typography ---- */
   --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
   --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -89,6 +95,9 @@
   --danger: var(--red-600);     --danger-container: var(--red-100);
 
   --focus: var(--sun-500);
+  --studio-bg: var(--studio-light);
+  --studio-shadow: var(--studio-light-shadow);
+  --studio-ink: var(--sand-900);
   --scrim: rgba(20, 16, 12, 0.45);
   --glass: rgba(248, 244, 238, 0.82);
 
@@ -127,6 +136,9 @@
     --success: #4ade80;  --success-container: rgba(74, 222, 128, .12);
     --warning: #fbbf24;  --warning-container: rgba(251, 191, 36, .12);
     --danger: #f87171;   --danger-container: rgba(248, 113, 113, .13);
+    --studio-bg: var(--studio-dark);
+    --studio-shadow: var(--studio-dark-shadow);
+    --studio-ink: #f2f4f5;
     --scrim: rgba(0, 0, 0, .6);
     --glass: rgba(12, 17, 16, .8);
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
@@ -162,9 +174,16 @@
   --success: #4ade80;  --success-container: rgba(74, 222, 128, .12);
   --warning: #fbbf24;  --warning-container: rgba(251, 191, 36, .12);
   --danger: #f87171;   --danger-container: rgba(248, 113, 113, .13);
+  --studio-bg: var(--studio-dark);
+  --studio-shadow: var(--studio-dark-shadow);
+  --studio-ink: #f2f4f5;
   --scrim: rgba(0, 0, 0, .6);
   --glass: rgba(12, 17, 16, .8);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
   --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, .6);
   --shadow-lg: 0 24px 50px -16px rgba(0, 0, 0, .7);
 }
+
+/* ---- Studio backdrop preference (independent of the app theme) ---- */
+html:root[data-studio="light"] { --studio-bg: var(--studio-light); --studio-shadow: var(--studio-light-shadow); --studio-ink: var(--sand-900); }
+html:root[data-studio="dark"]  { --studio-bg: var(--studio-dark);  --studio-shadow: var(--studio-dark-shadow);  --studio-ink: #f2f4f5; }

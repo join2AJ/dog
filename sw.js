@@ -1,9 +1,9 @@
 /* Offline support: precache the app shell; cache photos and sounds as they're used. */
-const CACHE = "pawpedia-v3";
+const CACHE = "pawpedia-v4";
 const MEDIA = "pawpedia-media-v1";
 const SHELL = [
   "/", "/index.html", "/success.html", "/css/tokens.css", "/css/styles.css",
-  "/js/breeds.js", "/js/data.js", "/js/credits.js", "/js/sounds.js", "/js/models.js", "/js/app.js",
+  "/js/breeds.js", "/js/data.js", "/js/credits.js", "/js/studio.js", "/js/sounds.js", "/js/models.js", "/js/app.js",
   "/manifest.webmanifest", "/icons/icon.svg", "/icons/icon-192.png", "/icons/icon-512.png",
   "/images/stages/newborn.jpg", "/images/stages/transitional.jpg", "/images/stages/senior.jpg"
 ];

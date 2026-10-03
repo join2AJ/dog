@@ -18,12 +18,58 @@
   const SIZES = ["Toy", "Small", "Medium", "Large", "Giant"];
   const P = CREDITS.photos;
 
+  /* ---------- Images: studio cutouts (product-photo style) or original photos ---------- */
+  const ST = window.STUDIO || { adults: [], busts: [], puppies: [], seniors: [], stages: [] };
+  const CUT = { adult: new Set(ST.adults), puppy: new Set(ST.puppies), senior: new Set(ST.seniors), stage: new Set(ST.stages) };
+  const BUST = new Set(ST.busts);
+  const studioPref = () => document.documentElement.dataset.studio || "auto";
+  const studioOn = () => studioPref() !== "photo";
+  const cutFor = (kind, id) => studioOn() && CUT[kind].has(id);
   const img = {
-    adult: (id) => `/images/breeds/${id}.jpg`,
-    sm: (id) => `/images/breeds/${id}-sm.jpg`,
-    puppy: (id) => (P[id] && P[id].puppy ? `/images/puppies/${id}.jpg` : null),
-    senior: (id) => (P[id] && P[id].senior ? `/images/seniors/${id}.jpg` : null)
+    adult: (id) => cutFor("adult", id) ? `/images/studio/${id}.webp` : `/images/breeds/${id}.jpg`,
+    sm: (id) => cutFor("adult", id) ? `/images/studio/${id}-sm.webp` : `/images/breeds/${id}-sm.jpg`,
+    photo: (id) => `/images/breeds/${id}.jpg`,
+    photoSm: (id) => `/images/breeds/${id}-sm.jpg`,
+    puppy: (id) => cutFor("puppy", id) ? `/images/studio/puppies/${id}.webp` : (P[id] && P[id].puppy ? `/images/puppies/${id}.jpg` : null),
+    senior: (id) => cutFor("senior", id) ? `/images/studio/seniors/${id}.webp` : (P[id] && P[id].senior ? `/images/seniors/${id}.jpg` : null),
+    stage: (k) => cutFor("stage", k) ? `/images/studio/stages/${k}.webp` : `/images/stages/${k}.jpg`
   };
+  /** Class names for a frame holding this image: "studio" (+ "bust" for close-up portraits). */
+  const frame = (kind, id) => {
+    if (!cutFor(kind, id)) return "";
+    const bustKey = kind === "adult" ? id : `${id}-${kind}`;
+    return "studio" + (BUST.has(bustKey) ? " bust" : "");
+  };
+  const thumbCls = (id) => (cutFor("adult", id) ? ' class="cutimg"' : "");
+
+  function applyStudio(pref) {
+    if (pref === "auto") delete document.documentElement.dataset.studio;
+    else document.documentElement.dataset.studio = pref;
+  }
+  applyStudio(store.get("pp-studio", "auto"));
+  const effectiveStudio = () => { const p = studioPref(); return p === "auto" ? (isDarkTheme() ? "dark" : "light") : p; };
+  function isDarkTheme() {
+    const t = document.documentElement.dataset.theme;
+    return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  const studioToggle = () => `
+    <div class="studio-toggle"><span>Background</span>
+      <div class="seg" role="group" aria-label="Photo background">
+        <button type="button" data-studio-set="light" aria-pressed="${effectiveStudio() === "light"}"><i class="swatch w"></i>White</button>
+        <button type="button" data-studio-set="dark" aria-pressed="${effectiveStudio() === "dark"}"><i class="swatch d"></i>Dark</button>
+        <button type="button" data-studio-set="photo" aria-pressed="${effectiveStudio() === "photo"}">📷 Photo</button>
+      </div>
+    </div>`;
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-studio-set]");
+    if (!b) return;
+    const v = b.dataset.studioSet;
+    store.set("pp-studio", v);
+    applyStudio(v);
+    const y = window.scrollY;
+    route(true);
+    window.scrollTo({ top: y });
+  });
   const shortName = (b) => b.name.replace(/ \(.*\)$/, "");
   const sizeRank = (b) => SIZES.indexOf(b.size);
   const creditLine = (c) => c ? `Photo: ${c.artist} · ${c.license}` : "";
@@ -67,6 +113,7 @@
     store.set("pp-theme", next);
     try { localStorage.setItem("pp-theme", next); } catch { /* ignore */ }
     syncThemeIcon();
+    if (studioPref() === "auto") { const y = window.scrollY; route(true); window.scrollTo({ top: y }); }
   });
   syncThemeIcon();
 
@@ -80,7 +127,7 @@
       if (!list.length) return "";
       return `<div class="picker-group">${r.icon} ${esc(r.name)}</div>` + list.map((b) => `
         <button class="picker-item ${b.id === pickerActive ? "active" : ""}" type="button" data-pick="${b.id}">
-          <img src="${img.sm(b.id)}" alt="" loading="lazy" width="44" height="44">
+          <img src="${img.sm(b.id)}"${thumbCls(b.id)} alt="" loading="lazy" width="44" height="44">
           <span><b>${esc(b.name)}</b><small>${b.flag} ${esc(b.country)} · ${esc(b.size)}</small></span>
         </button>`).join("");
     }).join("");
@@ -102,7 +149,7 @@
   });
   const pickerButton = (b, label = "Change breed") => `
     <button class="picker-btn" type="button" data-open-picker aria-label="${label}: currently ${esc(b.name)}">
-      <img src="${img.sm(b.id)}" alt="" width="44" height="44">
+      <img src="${img.sm(b.id)}"${thumbCls(b.id)} alt="" width="44" height="44">
       <span><b>${esc(b.name)}</b><small>${b.flag} ${esc(b.country)} · tap to change</small></span>
       ${icon("chev")}
     </button>`;
@@ -248,9 +295,9 @@
           </div>
         </div>
         <div class="collage">
-          <a href="#breed/indie"><figure><img src="${img.adult("indie")}" alt="Indian Pariah dog" fetchpriority="high"><figcaption>🇮🇳 Indie</figcaption></figure></a>
-          <a href="#breed/golden-retriever"><figure><img src="${img.sm("golden-retriever")}" alt="Golden Retriever"><figcaption>🇬🇧 Golden Retriever</figcaption></figure></a>
-          <a href="#breed/husky"><figure><img src="${img.sm("husky")}" alt="Siberian Husky"><figcaption>🇷🇺 Husky</figcaption></figure></a>
+          <a href="#breed/indie"><figure class="${frame("adult", "indie")}"><img src="${img.adult("indie")}" alt="Indian Pariah dog" fetchpriority="high"><figcaption>🇮🇳 Indie</figcaption></figure></a>
+          <a href="#breed/golden-retriever"><figure class="${frame("adult", "golden-retriever")}"><img src="${img.sm("golden-retriever")}" alt="Golden Retriever"><figcaption>🇬🇧 Golden Retriever</figcaption></figure></a>
+          <a href="#breed/husky"><figure class="${frame("adult", "husky")}"><img src="${img.sm("husky")}" alt="Siberian Husky"><figcaption>🇷🇺 Husky</figcaption></figure></a>
           <button class="bark-fab" type="button" id="hero-bark">🔊 Hear an Indie bark</button>
         </div>
       </div>
@@ -260,7 +307,7 @@
         <div class="region-grid">
           ${REGIONS.map((r) => `
             <a class="region-tile" href="#breeds/${r.id}">
-              <img src="${img.sm(regionCover[r.id])}" alt="" loading="lazy">
+              <img src="${img.photoSm(regionCover[r.id])}" alt="" loading="lazy">
               <b>${r.icon} ${esc(r.name)}</b>
               <small>${BREEDS.filter((b) => b.region === r.id).length} breeds</small>
             </a>`).join("")}
@@ -315,8 +362,8 @@
     const b = typeof id === "string" ? BY_ID[id] : id;
     return `
       <a class="bcard" href="#breed/${b.id}">
-        <div class="ph">
-          <img src="${img.sm(b.id)}" alt="${esc(b.name)}" loading="lazy" width="360" height="270">
+        <div class="ph ${frame("adult", b.id)}">
+          <img src="${img.sm(b.id)}" alt="${esc(b.name)}" loading="lazy" width="480" height="360">
           <span class="flag">${b.flag} ${esc(b.country)}${has3D(b.id) ? " · 🧊 3D" : ""}</span>
           ${favBtn(b.id)}
         </div>
@@ -355,6 +402,7 @@
           <button class="chip" type="button" id="fav-only" aria-pressed="${s.favOnly}">❤️ Saved</button>
         </div>
       </div>
+      <div style="display:flex;justify-content:flex-end;margin:calc(var(--sp-2) * -1) 0 var(--sp-3)">${studioToggle()}</div>
       <div id="breed-results"></div>`;
     fillCountries();
     $("#region-chips").addEventListener("click", (e) => {
@@ -420,13 +468,14 @@
     $("#view-breed").innerHTML = `
       <a class="back" href="#breeds${state.breeds.region ? "/" + state.breeds.region : ""}">${icon("back").replace("<svg", '<svg width="16" height="16"')} All breeds</a>
       <div class="dhero">
-        <div class="ph"><img src="${img.adult(b.id)}" alt="${esc(b.name)}">${creditLink(c.adult)}</div>
+        <div class="ph ${frame("adult", b.id)}"><img src="${img.adult(b.id)}" alt="${esc(b.name)}">${creditLink(c.adult)}</div>
         <div class="info">
           <div style="display:flex;justify-content:space-between;gap:12px;align-items:start">
             <div><span class="origin">${b.flag} ${esc(b.country)} · ${REGION[b.region].icon} ${esc(REGION[b.region].name)}</span><h1>${esc(b.name)}</h1></div>
             ${favBtn(b.id)}
           </div>
           <div class="tags">${b.temperament.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}<span class="tag">${esc(b.group)}</span></div>
+          ${studioToggle()}
           <dl class="stats">
             <div class="stat"><dt>Size</dt><dd>${esc(b.size)}</dd></div>
             <div class="stat"><dt>Weight</dt><dd>${esc(b.weight)}</dd></div>
@@ -472,9 +521,9 @@
       <section class="dsec" id="d-life">
         <h2>📈 Life stages of a ${esc(shortName(b))}</h2>
         <div class="mini-life">
-          <div class="card"><img src="${pup || img.sm(b.id)}" alt="" loading="lazy"><h3>🐶 Puppy</h3><p class="small">${esc(b.life.puppy)}</p></div>
-          <div class="card"><img src="${img.sm(b.id)}" alt="" loading="lazy"><h3>💪 Adult</h3><p class="small">${esc(b.life.adult)}</p></div>
-          <div class="card"><img src="${sen || "/images/stages/senior.jpg"}" alt="" loading="lazy"><h3>👴 Senior ${sen ? "" : '<span class="tag">generic photo</span>'}</h3><p class="small">${esc(b.life.senior)}</p></div>
+          <div class="card"><div class="${pup ? frame("puppy", b.id) : frame("adult", b.id)}"><img src="${pup || img.sm(b.id)}" alt="" loading="lazy"></div><h3>🐶 Puppy</h3><p class="small">${esc(b.life.puppy)}</p></div>
+          <div class="card"><div class="${frame("adult", b.id)}"><img src="${img.sm(b.id)}" alt="" loading="lazy"></div><h3>💪 Adult</h3><p class="small">${esc(b.life.adult)}</p></div>
+          <div class="card"><div class="${sen ? frame("senior", b.id) : frame("stage", "senior")}"><img src="${sen || img.stage("senior")}" alt="" loading="lazy"></div><h3>👴 Senior ${sen ? "" : '<span class="tag">generic photo</span>'}</h3><p class="small">${esc(b.life.senior)}</p></div>
         </div>
         <a class="btn tonal" style="margin-top:var(--sp-4)" href="#timeline/${b.id}">See the full ${esc(shortName(b))} timeline →</a>
       </section>
@@ -527,12 +576,13 @@
         <div>
           <div class="stage-photo" id="bark-photo">
             <span class="ring"></span><span class="ring"></span><span class="ring"></span>
-            <img src="${img.adult(b.id)}" alt="${esc(b.name)}">
+            <div class="frame ${frame("adult", b.id)}"><img src="${img.adult(b.id)}" alt="${esc(b.name)}"></div>
           </div>
           <div class="viz" aria-hidden="true">${"<i></i>".repeat(24)}</div>
         </div>
         <div style="display:grid;gap:var(--sp-4)">
           ${pickerButton(b)}
+          ${studioToggle()}
           <div class="meters" style="grid-template-columns:1fr">
             ${meter("How vocal is it?", b.barkiness, ["", "Very quiet", "Quiet", "Moderate", "Vocal", "Very vocal"][b.barkiness])}
           </div>
@@ -587,19 +637,20 @@
     const matureLabel = g.mature >= 24 ? "2 years" : `${g.mature} months`;
     const big = b.size === "Large" || b.size === "Giant", tiny = b.size === "Toy" || b.size === "Small";
     const pup = img.puppy(b.id), sen = img.senior(b.id);
-    const pupPhoto = pup ? { src: pup, label: `Real ${shortName(b)} puppy` } : { src: img.adult(b.id), label: `Adult ${shortName(b)} (puppy photo coming soon)` };
+    const pupPhoto = pup ? { src: pup, label: `Real ${shortName(b)} puppy`, cls: frame("puppy", b.id) } : { src: img.adult(b.id), label: `Adult ${shortName(b)} (puppy photo coming soon)`, cls: frame("adult", b.id) };
+    const adultPhoto = (label) => ({ src: img.adult(b.id), label, cls: frame("adult", b.id) });
     const T = Object.fromEntries(TIMELINE.map((t) => [t.id, t]));
     const foodExtra = big ? ` Use a ${b.size === "Giant" ? "giant" : "large"}-breed puppy formula for slow, steady growth, and don't add calcium.` : tiny ? " Small pups can get low blood sugar, so offer small, frequent meals." : "";
     return [
-      { ...T.newborn, age: "0–2 weeks", weight: `≈ ${w(g.birth * 0.8, g.birth * 1.2)} at birth`, photo: { src: "/images/stages/newborn.jpg", label: "Typical newborn puppies" }, credit: CREDITS.stages.newborn, note: null },
-      { ...T.transitional, age: "2–4 weeks", weight: `≈ ${w(g.birth * 2, g.birth * 3.2)}`, photo: { src: "/images/stages/transitional.jpg", label: "Typical 3–4 week-old pups" }, credit: CREDITS.stages.transitional, note: null },
+      { ...T.newborn, age: "0–2 weeks", weight: `≈ ${w(g.birth * 0.8, g.birth * 1.2)} at birth`, photo: { src: img.stage("newborn"), label: "Typical newborn puppies", cls: frame("stage", "newborn") }, credit: CREDITS.stages.newborn, note: null },
+      { ...T.transitional, age: "2–4 weeks", weight: `≈ ${w(g.birth * 2, g.birth * 3.2)}`, photo: { src: img.stage("transitional"), label: "Typical 3–4 week-old pups", cls: frame("stage", "transitional") }, credit: CREDITS.stages.transitional, note: null },
       { ...T.socialisation, age: "3–12 weeks", weight: `≈ ${w(g.at12w * 0.85, g.at12w * 1.1)} by 12 weeks`, photo: pupPhoto, credit: pup ? P[b.id].puppy : P[b.id].adult, note: b.life.puppy },
       { ...T.juvenile, age: "3–6 months", weight: `≈ ${w(g.at6m * 0.9, g.at6m * 1.05)} by 6 months`, food: T.juvenile.food + foodExtra, photo: pupPhoto, credit: pup ? P[b.id].puppy : P[b.id].adult, note: b.life.puppy },
-      { ...T.adolescent, age: `6 months – ${matureLabel}`, weight: `Nearing ${b.weight}`, photo: { src: img.adult(b.id), label: `Young adult ${shortName(b)}` }, credit: P[b.id].adult,
+      { ...T.adolescent, age: `6 months – ${matureLabel}`, weight: `Nearing ${b.weight}`, photo: adultPhoto(`Young adult ${shortName(b)}`), credit: P[b.id].adult,
         note: (big ? "Growth plates close late in big breeds, so avoid forced running, stairs and jumping until fully grown. " : "") + `Expect ${b.energy >= 4 ? "a LOT of teenage energy" : "some teenage testing of rules"}. Stay consistent.` },
-      { ...T.adult, age: `${matureLabel} – ${g.senior} years`, weight: b.weight, photo: { src: img.adult(b.id), label: `Adult ${shortName(b)}` }, credit: P[b.id].adult,
+      { ...T.adult, age: `${matureLabel} – ${g.senior} years`, weight: b.weight, photo: adultPhoto(`Adult ${shortName(b)}`), credit: P[b.id].adult,
         note: `${b.life.adult} Daily exercise: ${EXERCISE[b.energy]}. Comfort temperature: ${b.idealTemp}.` },
-      { ...T.senior, age: `${g.senior}+ years (lifespan ${b.lifespan})`, weight: `${b.weight} (watch for muscle loss)`, photo: sen ? { src: sen, label: `Real senior ${shortName(b)}` } : { src: "/images/stages/senior.jpg", label: "Senior dog (generic photo)" }, credit: sen ? P[b.id].senior : CREDITS.stages.senior,
+      { ...T.senior, age: `${g.senior}+ years (lifespan ${b.lifespan})`, weight: `${b.weight} (watch for muscle loss)`, photo: sen ? { src: sen, label: `Real senior ${shortName(b)}`, cls: frame("senior", b.id) } : { src: img.stage("senior"), label: "Senior dog (generic photo)", cls: frame("stage", "senior") }, credit: sen ? P[b.id].senior : CREDITS.stages.senior,
         note: `${b.life.senior} Watch especially for: ${b.issues.map((i) => i[0].replace(/ \(.*\)/, "")).join(", ")}.` }
     ];
   }
@@ -615,7 +666,7 @@
         <h1>From puppy to senior</h1>
         <p class="lead">Choose a breed to see how it looks, behaves, grows and what it needs at every stage, adjusted to its size and lifespan.</p>
       </div>
-      ${pickerButton(b)}
+      <div style="display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;justify-content:space-between">${pickerButton(b)}${studioToggle()}</div>
       <div class="stepper" role="tablist" aria-label="Life stages">
         ${stages.map((s, i) => `<button class="step" type="button" role="tab" data-i="${i}"><span class="dot">${STAGE_ICON[s.id]}</span><b>${esc(s.stage)}</b><small>${esc(s.age.split(" (")[0])}</small></button>`).join("")}
       </div>
@@ -638,7 +689,7 @@
       $(".step.active")?.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
       $("#stage-card").innerHTML = `
         <div class="life-card">
-          <div class="life-photo">
+          <div class="life-photo ${s.photo.cls || ""}">
             <img src="${s.photo.src}" alt="${esc(s.photo.label)}">
             <span class="badge label" style="background:var(--glass);color:var(--text)">${esc(s.photo.label)}</span>
             ${creditLink(s.credit)}
@@ -1030,7 +1081,7 @@
   const views = $$(".view");
   const TITLES = { home: "PawPedia — Dog Breeds, Barks, Care & Adoption Guide", breeds: "Dog Breeds", bark: "Bark Lab", timeline: "Life Stages", health: "Health", food: "Food Guide", adopt: "Adoption Guide", quiz: "Breed Quiz", services: "Get a Dog", credits: "Credits" };
   let currentView = null;
-  function route() {
+  function route(keepScroll) {
     const [name = "home", arg, arg2] = (location.hash.replace(/^#/, "") || "home").split("/");
     closeSheets();
     Sounds.stop();
@@ -1059,7 +1110,7 @@
       on ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current");
     });
     if (view === "services") handleServices(arg, arg2);
-    else if (!(view === currentView && (view === "adopt" || view === "breeds"))) window.scrollTo({ top: 0 });
+    else if (keepScroll !== true && !(view === currentView && (view === "adopt" || view === "breeds"))) window.scrollTo({ top: 0 });
     if (view !== "breed") document.title = view === "home" ? TITLES.home : `${TITLES[view]} · PawPedia`;
     currentView = view;
   }
