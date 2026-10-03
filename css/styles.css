@@ -208,7 +208,7 @@ label { font-weight: var(--fw-semibold); font-size: var(--fs-sm); }
 .promo::after { content: "🦴"; position: absolute; right: -10px; top: -26px; font-size: 7rem; opacity: .12; transform: rotate(-20deg); }
 
 /* ---------- Studio (product-photo) frames ---------- */
-.studio { position: relative; isolation: isolate; overflow: hidden; background: var(--studio-bg); }
+.studio { position: relative; isolation: isolate; overflow: hidden; background: var(--studio-bg) !important; }
 .studio::after { content: ""; position: absolute; z-index: 0; left: 18%; right: 18%; bottom: 6%; height: 9%; border-radius: 50%; background: radial-gradient(closest-side, var(--studio-shadow), transparent); pointer-events: none; }
 .studio.bust::after { display: none; }
 .studio > :not(img) { z-index: 2; }

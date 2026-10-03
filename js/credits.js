@@ -69,11 +69,11 @@ window.CREDITS = {
   },
   "tibetan-mastiff": {
    "adult": {
-    "title": "BIR Grupp 2- TIBETANSK MASTIFF, Legenda Tibeta Temudzhin (23938629470).jpg",
-    "artist": "Svenska Mässan from Sweden",
+    "title": "2013 Westminster Kennel Club Dog Show- Tibetan Mastiff GCH Sierras'Sasha-Yakone Nanuk (8469240739) (cropped).jpg",
+    "artist": "Pets Adviser from Brooklyn, USA",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "page": "https://commons.wikimedia.org/wiki/File:BIR_Grupp_2-_TIBETANSK_MASTIFF,_Legenda_Tibeta_Temudzhin_(23938629470).jpg"
+    "page": "https://commons.wikimedia.org/wiki/File%3A2013_Westminster_Kennel_Club_Dog_Show-_Tibetan_Mastiff_GCH_Sierras%27Sasha-Yakone_Nanuk_%288469240739%29_%28cropped%29.jpg"
    }
   },
   "lhasa-apso": {
@@ -94,11 +94,11 @@ window.CREDITS = {
   },
   "shih-tzu": {
    "adult": {
-    "title": "Shihtzu (cropped).jpg",
-    "artist": "Canino21",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "page": "https://commons.wikimedia.org/wiki/File:Shihtzu_(cropped).jpg"
+    "title": "9565Cuisine of Bulacan Cooking 11.jpg",
+    "artist": "Judgefloro",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File%3A9565Cuisine_of_Bulacan_Cooking_11.jpg"
    },
    "puppy": {
     "title": "Shih Tzu puppy - 20070802.jpg",
@@ -211,11 +211,11 @@ window.CREDITS = {
   },
   "akita": {
    "adult": {
-    "title": "Akita Collage.png",
-    "artist": "Peter Theakston; Keetanii; Melodorakitas; Sevenfatdogs",
-    "license": "CC BY 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Akita_Collage.png"
+    "title": "Akita Inu (male).jpg",
+    "artist": "Azurfrog",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AAkita_Inu_%28male%29.jpg"
    },
    "puppy": {
     "title": "Akita-red2.jpg",
@@ -807,11 +807,11 @@ window.CREDITS = {
   },
   "boerboel": {
    "adult": {
-    "title": "Boerboelmusta3.jpg",
-    "artist": "Canarian",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Boerboelmusta3.jpg"
+    "title": ".HuntHillBoerboelsGunston1.jpeg",
+    "artist": "The original uploader was Glen boerboels at English Wikipedia.",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3A.HuntHillBoerboelsGunston1.jpeg"
    }
   },
   "saluki": {

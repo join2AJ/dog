@@ -1031,7 +1031,7 @@
     const row = (thumb, c, what) => c ? `<div>${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : `<span class="card-ic">🔊</span>`}<span><b>${esc(what)}</b>: <a href="${esc(c.page)}" target="_blank" rel="noopener">${esc(c.title)}</a> by ${esc(c.artist)}, <a href="${esc(c.licenseUrl)}" target="_blank" rel="noopener">${esc(c.license)}</a></span></div>` : "";
     $("#view-credits").innerHTML = `
       <div class="page-head"><span class="eyebrow">Credits</span><h1>Photo &amp; sound credits</h1>
-      <p class="lead">PawPedia uses freely licensed photos from Wikimedia Commons and recordings from Freesound. Thank you to every photographer and recordist! Images were resized; sounds were trimmed and volume-normalised.</p></div>
+      <p class="lead">PawPedia uses freely licensed photos from Wikimedia Commons and recordings from Freesound. Thank you to every photographer and recordist! Changes made: photos were resized, and the studio versions have their background removed (cut out with an AI segmentation model) and are placed on a plain white or dark backdrop. Sounds were trimmed and volume-normalised.</p></div>
       <div class="card"><h2>🔊 Sounds</h2><div class="credits-list">${Object.entries(CREDITS.sounds).map(([k, c]) => row(null, c, Sounds.CLIPS[k] ? Sounds.CLIPS[k].label : k)).join("")}</div></div>
       <div class="card section"><h2>📷 Life-stage photos</h2><div class="credits-list">${Object.entries(CREDITS.stages).map(([k, c]) => row(`/images/stages/${k}.jpg`, c, k)).join("")}</div></div>
       <div class="card section"><h2>📷 Breed photos</h2><div class="credits-list">${BREEDS.map((b) => {

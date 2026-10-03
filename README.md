@@ -49,6 +49,7 @@ To add a model:
 ## Media sources
 
 - **Photos:** Wikimedia Commons (CC BY / CC BY-SA / public domain), resized. Every photo is credited on the image and on the Credits page.
+- **Studio cutouts (product-photo look):** `images/studio/` holds background-removed versions of the breed, puppy and senior photos. They were made locally with [rembg](https://github.com/danielgatis/rembg) (BiRefNet model), leash-cleaned, framed on a consistent 4:3 canvas with the dog standing on a common floor line, and exported as transparent WebP. The app shows them on a **white or dark studio backdrop** with a soft floor shadow. The White / Dark / Photo switch (on the breed list, breed pages, Bark Lab and Life stages) lets visitors choose, and the default follows the light/dark theme. `js/studio.js` lists which images have cutouts; any image without one falls back to the original photo.
 - **Sounds:** Freesound via Openverse (CC0 / CC BY), trimmed and volume-normalised in `/sounds`. Each breed plays real recordings pitched to its size. Only the Basenji yodel and the "scream" are synthesised (labelled *Simulated*) until a freely licensed recording is found.
 
 ## Run locally
@@ -84,7 +85,8 @@ js/credits.js         Photo & sound attributions (generated)
 js/sounds.js          Real-recording sound engine + visualiser data
 js/models.js          3D model registry for the AR viewer
 js/app.js             Router and all views
-images/               breeds/, puppies/, seniors/, stages/
+images/               breeds/, puppies/, seniors/, stages/ (originals) + studio/ (cutouts)
+js/studio.js          Which images have studio cutouts (generated)
 sounds/               Trimmed CC0 / CC BY recordings
 models/               3D models (.glb / .usdz)
 sw.js                 Offline cache (shell + media)
